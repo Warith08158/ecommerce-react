@@ -4,14 +4,10 @@ import { woman } from "../assets/images/images";
 
 const Auth = () => {
   return (
-    <div className="h-screen min-h-80 flex items-center justify-center">
-      <div className="max-w-5xl flex flex-col sm:flex-row items-center shadow-md gap-4 mx-auto border border-lightRed rounded-2xl">
+    <div className="flex items-center justify-center">
+      <div className="max-w-5xl flex flex-col sm:flex-row items-center sm:shadow-md gap-4 mx-auto sm:border sm:border-lightRed sm:rounded-b-2xl">
         <div className="flex-1">
-          <img
-            src={woman}
-            alt="woman"
-            className=" rounded-none sm:rounded-l-2xl"
-          />
+          <img src={woman} alt="woman" className="sm:rounded-bl-2xl" />
         </div>
         <div className="flex-1">
           <Outlet />
