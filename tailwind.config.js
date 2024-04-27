@@ -5,12 +5,15 @@ export default {
     extend: {
       fontFamily: {
         volkhov: ["Volkhov", "serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       colors: {
         lightRed: "#DBDBDB",
         black: "#000000",
         white: "#FFFFFF",
         lightGray: "#484848",
+        veryLightGray: "#E0E0E0",
+        whiteGray: "#8A8A8A",
       },
     },
     container: {

@@ -5,7 +5,7 @@ import { Provider, useSelector } from "react-redux";
 import "./features/menu/menuSlice.js";
 const App = () => {
   return (
-    <main>
+    <main className="font-poppins">
       <Provider store={store}>
         <RoutePages />
       </Provider>
