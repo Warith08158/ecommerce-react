@@ -18,7 +18,7 @@ const products = [
 const AvailableProducts = () => {
   return (
     <section className="py-8 shadow-md">
-      <div className="container mx-auto flex overflow-x-auto items-center justify-center gap-10 md:overflow-x-auto md:over">
+      <div className="container mx-auto flex overflow-x-hidden items-center justify-center gap-10 md:overflow-x-auto md:over">
         {products.map((product) => (
           <img
             src={product.logo}

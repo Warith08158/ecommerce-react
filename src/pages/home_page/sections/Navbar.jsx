@@ -13,13 +13,7 @@ const Navbar = () => {
   return (
     <section className="border border-b-veryLightGray sticky bg-white right-0 left-0 top-0">
       <div className="container mx-auto py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <STOPSHOP />
-          <div className="rounded-xl p-3 bg-black shadow-lg">
-            <img src={cartIcon} alt="cart-icon" className="w-4 " />
-          </div>
-        </div>
-
+        <STOPSHOP />
         <div className="hidden sm:flex items-center gap-8">
           <nav className="flex items-center gap-8">
             {links.map((link) => (
