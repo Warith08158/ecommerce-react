@@ -18,12 +18,13 @@ const products = [
 const AvailableProducts = () => {
   return (
     <section className="py-8 shadow-md">
-      <div className="container mx-auto flex overflow-x-hidden items-center justify-center gap-10 md:overflow-x-auto md:over">
+      <div className="container mx-auto flex overflow-x-hidden items-center justify-center gap-4 lg:gap-8">
         {products.map((product) => (
           <img
+            key={product.name}
             src={product.logo}
             alt={product.name}
-            className="object-contain w-28"
+            className="object-contain w-20 lg:w-24"
           />
         ))}
       </div>

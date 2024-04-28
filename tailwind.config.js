@@ -3,6 +3,9 @@ export default {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "deals-bg": "url('/src/assets/images/dealsBackground.png')",
+      },
       fontFamily: {
         volkhov: ["Volkhov", "serif"],
         poppins: ["Poppins", "sans-serif"],

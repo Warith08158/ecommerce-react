@@ -7,11 +7,11 @@ import {
   heroImage4,
 } from "../../../assets/images/images";
 import { Button } from "../../../components/components";
-import { cartIcon, arrowUp } from "../../../assets/Icons/Icons";
+import { cartIcon } from "../../../assets/Icons/Icons";
 
 const Hero = () => {
   return (
-    <section className="hero">
+    <section className="hero relative">
       <div className="container mx-auto pb-5">
         <div className="lg:flex lg:flex-row lg:items-stretch lg:justify-between lg:gap-4">
           <div className="hidden lg:block lg:flex-1 bg-veryLightGray rounded-b-xl">
@@ -47,7 +47,12 @@ const Hero = () => {
             <img src={heroImage4} alt="hero-image-4" />
           </div>
         </div>
-      </div>{" "}
+      </div>
+      <div className="fixed right-0 left-0 bottom-8 container flex justify-end z-10">
+        <div className="bg-black px-3 py-2 rounded-lg shadow-md">
+          <img src={cartIcon} alt="cart-icon" />
+        </div>
+      </div>
     </section>
   );
 };

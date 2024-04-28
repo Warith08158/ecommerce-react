@@ -9,6 +9,10 @@ import louisVutton from "./louis_Vuition.png";
 import prada from "./prada.png";
 import calveinKlein from "./calvinKlein.png";
 import denim from "./denim.png";
+import dealsBackground from "./dealsBackground.png";
+import dealImage1 from "./dealImage1.png";
+import dealImage2 from "./dealImage2.png";
+import dealImage3 from "./dealImage3.png";
 
 export {
   woman,
@@ -22,4 +26,8 @@ export {
   prada,
   calveinKlein,
   denim,
+  dealsBackground,
+  dealImage1,
+  dealImage2,
+  dealImage3,
 };
