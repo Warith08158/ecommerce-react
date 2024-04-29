@@ -20,22 +20,38 @@ const NewArrivalsGallery = () => {
 
   return (
     <div>
-      {/* <img src={rating(4)} alt="rating" className="w-24 bg-black" /> */}
-      <div className="container mt-16 w-[85%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+      <div className="container mt-16 w-[85%] mx-auto items-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
         {allProducts.map((product) => (
           <div key={product.id} className="flex justify-center">
-            <div className="flex items-col items-start justify-end p-3 w-48 rounded-md shadow-lg flex-col gap-3">
-              <img
-                src={`${"/src/" + product.image}`}
-                alt={product.name}
-                className="object-cover w-32 h-32"
-              />
-              <p className="text-xs">{product.name}</p>
-              <img
-                src={rating(product.rating.stars)}
-                alt="rating"
-                className="h-4 object-contain"
-              />
+            <div className="flex  w-[80%] p-4 sm:w-48 rounded-md shadow-lg flex-col gap-3">
+              <div className="flex justify-center">
+                <img
+                  src={`${"/src/" + product.image}`}
+                  alt={product.name}
+                  className="object-contain max-h-44 sm:w-32 sm:h-32"
+                />
+              </div>
+
+              <div className="flex flex-col items-start gap-2 mt-4">
+                <p className="text-xs max-w-[250px]">{product.name}</p>
+                <img
+                  src={rating(product.rating.stars)}
+                  alt="rating"
+                  className="h-4 object-contain"
+                />
+              </div>
+
+              <p className="text-xs text-lightGray mt-1">
+                ({product.rating.count}) reviews
+              </p>
+              <div className="mt-1 flex items-center justify-between">
+                <p className="text-base text-lightGray oldstyle-nums">
+                  ${Math.floor(product.priceCents / 100)}
+                </p>
+                <p className="text-sm text-lightGrayWhite line-through">
+                  ${Math.floor((product.priceCents / 100) * 2)}
+                </p>
+              </div>
             </div>
           </div>
         ))}
@@ -47,7 +63,7 @@ const NewArrivalsGallery = () => {
         >
           <button
             onClick={() => dispatch(showMore())}
-            className=" cursor-pointer text-sm text-white py-2 px-4 rounded-md shadow-md bg-black"
+            className="cursor-pointer text-sm text-white py-2 px-4 rounded-md shadow-md bg-black"
           >
             Load more...
           </button>
