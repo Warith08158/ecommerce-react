@@ -3,6 +3,7 @@ import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import AvailableProducts from "./sections/AvailableProducts";
 import Deals from "./sections/Deals";
+import NewArrivals from "./sections/NewArrivals";
 const HomePage = () => {
   return (
     <section>
@@ -10,6 +11,7 @@ const HomePage = () => {
       <Hero />
       <AvailableProducts />
       <Deals />
+      <NewArrivals />
     </section>
   );
 };

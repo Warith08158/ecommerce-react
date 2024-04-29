@@ -470,3 +470,12 @@ const products = [
     keywords: ["sweaters", "hoodies", "apparel", "mens"],
   },
 ];
+
+const keywords = [];
+products.forEach((product) =>
+  product.keywords.forEach((keyword) => {
+    if (!keywords.includes(keyword)) keywords.push(keyword);
+  })
+);
+
+console.log(keywords.sort());
