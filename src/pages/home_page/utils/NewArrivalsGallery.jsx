@@ -26,13 +26,13 @@ const NewArrivalsGallery = () => {
           <div key={product.id} className="flex justify-center">
             <div className="flex items-col items-start justify-end p-3 w-48 rounded-md shadow-lg flex-col gap-3">
               <img
-                src={"/src/" + `${product.image}`}
+                src={`${"/src/" + product.image}`}
                 alt={product.name}
                 className="object-cover w-32 h-32"
               />
               <p className="text-xs">{product.name}</p>
               <img
-                src={`${rating(product.rating.stars)}`}
+                src={rating(product.rating.stars)}
                 alt="rating"
                 className="h-4 object-contain"
               />
