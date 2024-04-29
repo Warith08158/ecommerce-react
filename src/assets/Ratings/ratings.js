@@ -25,11 +25,12 @@ const ratings = [
 ];
 
 export const rating = (rating) => {
-  const rate = rating * 10;
+  const number = parseInt(rating);
+  const rate = number * 10;
   let matchRating;
   ratings.forEach((eachRating) => {
     const getRating = eachRating
-      .replace("/src/Data/Ratings/rating-", "")
+      .replace("/src/assets/Ratings/rating-", "")
       .replace(".png", "");
     if (rate.toString() === getRating) {
       matchRating = eachRating;

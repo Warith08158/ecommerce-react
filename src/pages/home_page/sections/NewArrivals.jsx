@@ -2,7 +2,10 @@ import React, { useRef } from "react";
 import { keywords } from "../../../data/data";
 import { arrowLeft, arrowRight } from "../../../assets/Icons/Icons";
 import NewArrivalsGallery from "../utils/NewArrivalsGallery";
-import { showAll } from "../../../features/newArrivalsGaallery/newArrivalsGallerySlice";
+import {
+  showAll,
+  reset,
+} from "../../../features/newArrivalsGaallery/newArrivalsGallerySlice";
 import { useDispatch, useSelector } from "react-redux";
 const NewArrivals = () => {
   const previous = useRef();
@@ -33,8 +36,11 @@ const NewArrivals = () => {
             className="text-sm mt-10 flex items-center gap-2 justify-between w-full overflow-x-auto keywords mx-auto"
           >
             <button
-              onClick={() => dispatch(showAll("All"))}
-              className={` px-6 rounded-md py-2  ${
+              onClick={() => {
+                dispatch(reset());
+                dispatch(showAll("All"));
+              }}
+              className={` px-6 rounded-md py-2 cursor-pointer  ${
                 filterBy === "All"
                   ? "bg-black text-white"
                   : "bg-grayWhite text-lightGrayWhite"
@@ -44,9 +50,12 @@ const NewArrivals = () => {
             </button>
             {keywords.map((keyword) => (
               <button
-                onClick={() => dispatch(showAll(keyword))}
+                onClick={() => {
+                  dispatch(reset());
+                  dispatch(showAll(keyword));
+                }}
                 key={keyword}
-                className={`px-6 rounded-md py-2 ${
+                className={`px-6 rounded-md py-2 cursor-pointer  ${
                   filterBy === keyword
                     ? "bg-black text-white"
                     : "bg-grayWhite text-lightGrayWhite"

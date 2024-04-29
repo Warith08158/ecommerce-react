@@ -6,7 +6,7 @@ const initialState = {
   productsCopy: [...products],
   filterBy: "All",
   loadMore: true,
-  displayProducts: 10,
+  displayProducts: 8,
 };
 const newArrivalsGallery = createSlice({
   name: "newArrivalsGallery",
@@ -35,10 +35,13 @@ const newArrivalsGallery = createSlice({
       if (state.products.length === state.displayProducts) {
         return;
       }
-      state.displayProducts += 10;
+      state.displayProducts += 8;
+    },
+    reset: (state) => {
+      state.displayProducts = 8;
     },
   },
 });
 
 export default newArrivalsGallery.reducer;
-export const { showAll, showMore } = newArrivalsGallery.actions;
+export const { showAll, showMore, reset } = newArrivalsGallery.actions;
