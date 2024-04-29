@@ -3,7 +3,6 @@ import RoutePages from "./Routes/RoutePages";
 import { store } from "./reduxStore/store";
 import { Provider, useSelector } from "react-redux";
 import "./features/menu/menuSlice.js";
-import "./data/products.js";
 const App = () => {
   return (
     <main className="font-poppins">

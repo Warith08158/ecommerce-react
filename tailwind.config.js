@@ -17,6 +17,8 @@ export default {
         lightGray: "#484848",
         veryLightGray: "#E0E0E0",
         whiteGray: "#8A8A8A",
+        grayWhite: "#FAFAFA",
+        lightGrayWhite: "#8A8A8A",
       },
     },
     container: {

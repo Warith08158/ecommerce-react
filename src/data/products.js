@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -470,12 +470,3 @@ const products = [
     keywords: ["sweaters", "hoodies", "apparel", "mens"],
   },
 ];
-
-const keywords = [];
-products.forEach((product) =>
-  product.keywords.forEach((keyword) => {
-    if (!keywords.includes(keyword)) keywords.push(keyword);
-  })
-);
-
-console.log(keywords.sort());
