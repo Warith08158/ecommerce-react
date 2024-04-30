@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         "deals-bg": "url('/src/assets/images/dealsBackground.png')",
+        "pinkyBinders-bg": "url('/src/assets/images/pinkyBindersBg.jpg')",
       },
       fontFamily: {
         volkhov: ["Volkhov", "serif"],
@@ -19,6 +20,7 @@ export default {
         whiteGray: "#8A8A8A",
         grayWhite: "#FAFAFA",
         lightGrayWhite: "#8A8A8A",
+        pinkyBinder: "#DADADA",
       },
     },
     container: {

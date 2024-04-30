@@ -2,8 +2,13 @@ import React from "react";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import AvailableProducts from "./sections/AvailableProducts";
-import Deals from "./sections/Deals";
 import NewArrivals from "./sections/NewArrivals";
+import {
+  Deals,
+  Features,
+  PinkyBinder,
+  Gallery,
+} from "../../components/components";
 const HomePage = () => {
   return (
     <section>
@@ -12,6 +17,9 @@ const HomePage = () => {
       <AvailableProducts />
       <Deals />
       <NewArrivals />
+      <PinkyBinder />
+      <Features />
+      <Gallery />
     </section>
   );
 };

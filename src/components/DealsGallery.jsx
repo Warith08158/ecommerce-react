@@ -1,15 +1,8 @@
 import React from "react";
-import {
-  dealImage1,
-  dealImage2,
-  dealImage3,
-} from "../../../assets/images/images";
-import { arrowLeft, arrowRight } from "../../../assets/Icons/Icons";
-import {
-  next,
-  previous,
-} from "../../../features/dealsGallery/dealsGallerySlice";
 import { useDispatch, useSelector } from "react-redux";
+import { dealImage1, dealImage2, dealImage3 } from "../assets/images/images";
+import { arrowLeft, arrowRight } from "../assets/Icons/Icons";
+import { next, previous } from "../features/dealsGallery/dealsGallerySlice";
 
 const images = [dealImage1, dealImage2, dealImage3];
 

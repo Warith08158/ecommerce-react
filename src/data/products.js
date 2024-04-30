@@ -4,7 +4,7 @@ export const products = [
     image: "images/products/athleticcottonsocks6pairs.jpg",
     name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
     rating: {
-      stars: 4.5,
+      stars: 3,
       count: 87,
     },
     priceCents: 1090,
@@ -105,7 +105,7 @@ export const products = [
     image: "images/products/knit-athletic-sneakers-gray.jpg",
     name: "Waterproof Knit Athletic Sneakers - Gray",
     rating: {
-      stars: 4,
+      stars: 2.5,
       count: 89,
     },
     priceCents: 3390,

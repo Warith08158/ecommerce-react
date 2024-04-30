@@ -13,6 +13,7 @@ import dealsBackground from "./dealsBackground.png";
 import dealImage1 from "./dealImage1.png";
 import dealImage2 from "./dealImage2.png";
 import dealImage3 from "./dealImage3.png";
+import pinkyBindersBg from "./pinkyBindersBg.jpg";
 
 export {
   woman,
@@ -30,4 +31,5 @@ export {
   dealImage1,
   dealImage2,
   dealImage3,
+  pinkyBindersBg,
 };

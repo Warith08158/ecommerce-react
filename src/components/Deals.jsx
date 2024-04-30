@@ -1,8 +1,7 @@
 import React from "react";
-import { Button } from "../../../components/components";
-import CountDownTimer from "../utils/CountDownTimer";
-import DealsGallery from "../utils/DealsGallery";
-
+import { Button } from "./components";
+import CountDownTimer from "./CountDownTimer";
+import DealsGallery from "./DealsGallery";
 const Deals = () => {
   return (
     <section className="relative mx-auto max-w-[1536px] pt-[5px] mt-[15px] pb-5 bg-deals-bg overflow-x-hidden">

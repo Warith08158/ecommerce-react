@@ -27,8 +27,6 @@ const NewArrivals = () => {
         <p className="mt-4 md:text-center max-w-[600px] mx-auto text-base text-whiteGray">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
           nulla ut, tenetur, voluptatem ipsam soluta ex odit iusto cupiditate
-          pariatur, nihil possimus dolore accusamus beatae ratione eius repellat
-          commodi id.
         </p>
         <div className="relative max-w-[70%] mx-auto">
           <div
