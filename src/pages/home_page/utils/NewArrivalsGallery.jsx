@@ -57,16 +57,13 @@ const NewArrivalsGallery = () => {
         ))}
       </div>
       {products.length > 8 && allProducts.length !== products.length && (
-        <div
-          className="mt-12  flex justify-center cursor-pointer "
-          onClick={() => dispatch(showMore())}
-        >
-          <button
+        <div className="mt-12  flex justify-center">
+          <div
             onClick={() => dispatch(showMore())}
             className="cursor-pointer text-sm text-white py-2 px-4 rounded-md shadow-md bg-black"
           >
             Load more...
-          </button>
+          </div>
         </div>
       )}
     </div>
