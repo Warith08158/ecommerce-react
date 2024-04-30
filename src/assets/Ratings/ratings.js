@@ -9,6 +9,7 @@ import rating35 from "./rating-35.png";
 import rating40 from "./rating-40.png";
 import rating45 from "./rating-45.png";
 import rating50 from "./rating-50.png";
+export { rating10 };
 
 const ratings = [
   rating0,

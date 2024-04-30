@@ -21,6 +21,7 @@ export default {
         grayWhite: "#FAFAFA",
         lightGrayWhite: "#8A8A8A",
         pinkyBinder: "#DADADA",
+        testimonialIimageBg: "#D9D9D9",
       },
     },
     container: {

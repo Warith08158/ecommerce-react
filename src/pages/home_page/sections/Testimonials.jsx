@@ -1,23 +1,22 @@
 import React from "react";
-import GalleryImages from "./GalleryImages";
+import TestimonialCard from "../utils/TestimonialCard";
 
-const Gallery = () => {
+const Testimonials = () => {
   return (
-    <section className="py-20">
+    <section className="py-20 bg-grayWhite">
       <div className="container">
         <h1 className="font-volkhov text-lightGray font-medium text-2xl lg:text-3xl text-left md:text-center">
-          Follow Us on Instagram
+          This Is What Our Custormers Say
         </h1>
-        <div className="flex justify-center ">
+        <div className="">
           <p className="mt-4 text-left md:text-center max-w-[600px] mx-auto text-base text-whiteGray">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo sunt,
-            officiis quos, modi sint facere tempora temporibus tenetur beatae
           </p>
         </div>
       </div>
-      <GalleryImages />
+      <TestimonialCard />
     </section>
   );
 };
 
-export default Gallery;
+export default Testimonials;

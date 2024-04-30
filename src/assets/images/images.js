@@ -14,7 +14,14 @@ import dealImage1 from "./dealImage1.png";
 import dealImage2 from "./dealImage2.png";
 import dealImage3 from "./dealImage3.png";
 import pinkyBindersBg from "./pinkyBindersBg.jpg";
-
+import galleryImage1 from "./galleryImage1.jpg";
+import galleryImage2 from "./galleryImage2.jpg";
+import galleryImage3 from "./galleryImage3.jpg";
+import galleryImage4 from "./galleryImage4.jpg";
+import galleryImage5 from "./galleryImage5.jpg";
+import galleryImage6 from "./galleryImage6.jpg";
+import galleryImage7 from "./galleryImage7.jpg";
+import testimonialImage1 from "./testimonialImage1.jpg";
 export {
   woman,
   heroImage1,
@@ -32,4 +39,12 @@ export {
   dealImage2,
   dealImage3,
   pinkyBindersBg,
+  galleryImage1,
+  galleryImage2,
+  galleryImage3,
+  galleryImage4,
+  galleryImage5,
+  galleryImage6,
+  galleryImage7,
+  testimonialImage1,
 };

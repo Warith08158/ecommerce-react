@@ -48,11 +48,11 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="fixed right-0 left-0 bottom-8 container flex justify-end z-10">
+      {/* <div className="fixed right-0 left-0 bottom-8 container flex justify-end z-10">
         <div className="bg-black px-3 py-2 rounded-lg shadow-md">
           <img src={cartIcon} alt="cart-icon" />
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

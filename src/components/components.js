@@ -5,5 +5,15 @@ import Deals from "./Deals";
 import PinkyBinder from "./PinkyBinder";
 import Features from "./Features";
 import Gallery from "./Gallery";
+import NewsLetter from "./NewsLetter";
 
-export { Navbar, STOPSHOP, Button, Deals, PinkyBinder, Features, Gallery };
+export {
+  Navbar,
+  STOPSHOP,
+  Button,
+  Deals,
+  PinkyBinder,
+  Features,
+  Gallery,
+  NewsLetter,
+};

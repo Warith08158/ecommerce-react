@@ -8,7 +8,9 @@ import {
   Features,
   PinkyBinder,
   Gallery,
+  NewsLetter,
 } from "../../components/components";
+import Testimonials from "./sections/Testimonials";
 const HomePage = () => {
   return (
     <section>
@@ -20,6 +22,8 @@ const HomePage = () => {
       <PinkyBinder />
       <Features />
       <Gallery />
+      <Testimonials />
+      <NewsLetter />
     </section>
   );
 };
