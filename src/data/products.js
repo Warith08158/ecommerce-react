@@ -1,7 +1,7 @@
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-    image: "images/products/athleticcottonsocks6pairs.jpg",
+    image: "images/products/athleticcottonsocks6pairs.JPG",
     name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
     rating: {
       stars: 3,
