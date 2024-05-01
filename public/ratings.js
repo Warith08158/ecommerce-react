@@ -33,8 +33,9 @@ export const rating = (rating) => {
       .replace("/public/rating-", "")
       .replace(".png", "");
     if (rate.toString() === getRating) {
-      matchRating = eachRating.replace("/public", "");
+      matchRating = eachRating.replace("/public/", "/");
     }
   });
+  console.log(matchRating);
   return matchRating;
 };
