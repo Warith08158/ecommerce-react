@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "./components";
+import { Link } from "react-router-dom";
 
 const PinkyBinder = () => {
   return (
@@ -25,7 +26,9 @@ const PinkyBinder = () => {
               <p className="bg-black px-4 py-1 rounded-md text-white">M</p>
             </div>
             <p className="text-black text-xl font-medium">$100.00</p>
-            <Button text={"Buy Now"} />
+            <Link to="/shopping/shop">
+              <Button text={"Buy Now"} />
+            </Link>
           </div>
         </div>
       </div>

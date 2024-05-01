@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./components";
 import CountDownTimer from "./CountDownTimer";
 import DealsGallery from "./DealsGallery";
+import { Link } from "react-router-dom";
 const Deals = () => {
   return (
     <section className="relative mx-auto max-w-[1536px] pt-[5px] mt-[15px] pb-5 bg-deals-bg overflow-x-hidden">
@@ -16,6 +17,7 @@ const Deals = () => {
             explicabo veritatis modi tempora illum cupiditate placeat voluptates
             atque molestiae vel, ipsa dignissimos eum harum.
           </p>
+          <Link to="/shopping/shop"></Link>
           <Button text={"Buy Now"} />
           <div className="flex flex-col items-start gap-1">
             <h3 className="text-lightGray text-lg">

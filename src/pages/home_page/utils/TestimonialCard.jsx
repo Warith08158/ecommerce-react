@@ -32,7 +32,7 @@ const TestimonialCard = () => {
           </div>
           <div>
             <p className="text-black text-sm text-center sm:text-left font-light max-w-[300px]">
-              {testimonials_[card2].comment}
+              "{testimonials_[card2].comment}"
             </p>
             <div className="flex justify-center sm:justify-start">
               <img
@@ -54,7 +54,7 @@ const TestimonialCard = () => {
         </div>
         <div className="shadow-lg hidden md:block pr-6 pt-4 pb-24 rounded-r-md w-[130px] h-[150px]">
           <p className="text-black text-sm text-center sm:text-left font-light">
-            {testimonials_[card3].paragraph}
+            {testimonials_[card3].paragraph}"
           </p>
         </div>
       </div>

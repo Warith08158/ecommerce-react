@@ -8,6 +8,7 @@ import {
 } from "../../../assets/images/images";
 import { Button } from "../../../components/components";
 import { cartIcon } from "../../../assets/Icons/Icons";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -32,7 +33,9 @@ const Hero = () => {
               <img src={sale} alt="sale" className="object-contain h-28 w-80" />
               <h1 className="text-lightGray text-sm">NEW COLLECTION</h1>
               <button className="mt-5 mb-5">
-                <Button text={"SHOP NOW"} />
+                <Link to="/shopping/shop">
+                  <Button text={"SHOP NOW"} />
+                </Link>
               </button>
             </div>
             <div className=" flex items-center justify-center">
@@ -48,7 +51,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      {/* <div className="fixed right-0 left-0 bottom-8 container flex justify-end z-10">
+      {/* <div className="fixed right-0 left-0 bottom-16 container flex justify-end z-10">
         <div className="bg-black px-3 py-2 rounded-lg shadow-md">
           <img src={cartIcon} alt="cart-icon" />
         </div>

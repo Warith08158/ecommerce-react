@@ -6,6 +6,7 @@ import PinkyBinder from "./PinkyBinder";
 import Features from "./Features";
 import Gallery from "./Gallery";
 import NewsLetter from "./NewsLetter";
+import Footer from "./Footer";
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   Features,
   Gallery,
   NewsLetter,
+  Footer,
 };

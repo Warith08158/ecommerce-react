@@ -6,6 +6,7 @@ export default {
       backgroundImage: {
         "deals-bg": "url('/src/assets/images/dealsBackground.png')",
         "pinkyBinders-bg": "url('/src/assets/images/pinkyBindersBg.jpg')",
+        "newsLetter-bg": "url('/src/assets/images/newsLetterBg.jpg')",
       },
       fontFamily: {
         volkhov: ["Volkhov", "serif"],

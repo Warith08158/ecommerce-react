@@ -22,6 +22,15 @@ import galleryImage5 from "./galleryImage5.jpg";
 import galleryImage6 from "./galleryImage6.jpg";
 import galleryImage7 from "./galleryImage7.jpg";
 import testimonialImage1 from "./testimonialImage1.jpg";
+import testimonialImage2 from "./testmonialImage2.jpg";
+import testimonialImage3 from "./testimonialImage3.jpg";
+import testimonialImage4 from "./testimonialImage4.jpg";
+import testimonialImage5 from "./testimonialImage5.avif";
+import testimonialImage6 from "./testimonialImage6.png";
+import testimonialImage7 from "./testimonialImage7.avif";
+import testimonialImage8 from "./testimonialImage8.avif";
+import testimonialImage9 from "./testimonialImage9.avif";
+import newsLetterBg from "./newsLetterBg.jpg";
 export {
   woman,
   heroImage1,
@@ -47,4 +56,13 @@ export {
   galleryImage6,
   galleryImage7,
   testimonialImage1,
+  testimonialImage2,
+  testimonialImage3,
+  testimonialImage4,
+  testimonialImage5,
+  testimonialImage6,
+  testimonialImage7,
+  testimonialImage8,
+  testimonialImage9,
+  newsLetterBg,
 };

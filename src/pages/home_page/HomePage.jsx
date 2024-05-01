@@ -9,6 +9,7 @@ import {
   PinkyBinder,
   Gallery,
   NewsLetter,
+  Footer,
 } from "../../components/components";
 import Testimonials from "./sections/Testimonials";
 const HomePage = () => {
@@ -24,6 +25,7 @@ const HomePage = () => {
       <Gallery />
       <Testimonials />
       <NewsLetter />
+      <Footer />
     </section>
   );
 };
