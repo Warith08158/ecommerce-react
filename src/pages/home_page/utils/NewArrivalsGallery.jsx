@@ -22,7 +22,7 @@ const NewArrivalsGallery = () => {
             <div className="flex  w-[80%] p-4 sm:w-48 rounded-md shadow-lg flex-col gap-3">
               <div className="flex justify-center">
                 <img
-                  src={`/public/${product.image}`}
+                  src={`/${product.image}`}
                   alt={product.name}
                   className="object-contain max-h-44 sm:w-32 sm:h-32"
                 />
