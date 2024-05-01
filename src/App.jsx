@@ -1,7 +1,7 @@
 import React from "react";
 import RoutePages from "./Routes/RoutePages";
 import { store } from "./reduxStore/store";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import "./features/menu/menuSlice.js";
 import { rating } from "./assets/Ratings/ratings.js";
 const App = () => {
