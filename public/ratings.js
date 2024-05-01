@@ -30,7 +30,7 @@ export const rating = (rating) => {
   let matchRating;
   ratings.forEach((eachRating) => {
     const getRating = eachRating
-      .replace("/public/Ratings/rating-", "")
+      .replace("/public/rating-", "")
       .replace(".png", "");
     if (rate.toString() === getRating) {
       matchRating = eachRating.replace("/public", "");

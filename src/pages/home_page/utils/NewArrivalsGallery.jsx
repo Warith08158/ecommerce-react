@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showMore } from "../../../features/newArrivalsGaallery/newArrivalsGallerySlice";
-import { rating } from "../../../../public/Ratings/ratings.js";
+import { rating } from "../../../../public/ratings.js";
 
 const NewArrivalsGallery = () => {
   const dispatch = useDispatch();
@@ -9,8 +9,6 @@ const NewArrivalsGallery = () => {
     (store) => store.newArrivalsGallery
   );
   const allProducts = [...products];
-
-  console.log(rating("4"));
 
   while (allProducts.length > displayProducts) {
     allProducts.pop();
