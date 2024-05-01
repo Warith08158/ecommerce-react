@@ -14,10 +14,6 @@ const NewArrivalsGallery = () => {
     allProducts.pop();
   }
 
-  // ../../../..
-
-  // ../../../.." +
-
   return (
     <div>
       <div className="container mt-16 w-[85%] mx-auto items-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
@@ -26,7 +22,7 @@ const NewArrivalsGallery = () => {
             <div className="flex  w-[80%] p-4 sm:w-48 rounded-md shadow-lg flex-col gap-3">
               <div className="flex justify-center">
                 <img
-                  src={`${"src/" + product.image}`}
+                  src={`/public/${product.image}`}
                   alt={product.name}
                   className="object-contain max-h-44 sm:w-32 sm:h-32"
                 />
