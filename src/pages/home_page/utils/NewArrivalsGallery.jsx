@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showMore } from "../../../features/newArrivalsGaallery/newArrivalsGallerySlice";
-import { rating } from "../../../../public/ratings.js";
+import { ratings } from "../../../data/ratings";
 
 const NewArrivalsGallery = () => {
   const dispatch = useDispatch();
@@ -31,7 +31,11 @@ const NewArrivalsGallery = () => {
               <div className="flex flex-col items-start gap-2 mt-4">
                 <p className="text-xs max-w-[250px]">{product.name}</p>
                 <img
-                  src={rating(product.rating.stars)}
+                  src={`/${
+                    ratings.find(
+                      (rating) => product.rating.stars === rating.rating
+                    ).image
+                  }`}
                   alt="rating"
                   className="h-4 object-contain"
                 />

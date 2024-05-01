@@ -1,11 +1,11 @@
 import React from "react";
-import { rating } from "../../../../public/ratings";
 import { arrowLeft, arrowRight } from "../../../assets/Icons/Icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   next,
   previous,
 } from "../../../features/Testimonials/TestimonialSlice";
+import { ratings } from "../../../data/ratings";
 
 const TestimonialCard = () => {
   const testimonials = useSelector((store) => store.testimonial);
@@ -36,7 +36,11 @@ const TestimonialCard = () => {
             </p>
             <div className="flex justify-center sm:justify-start">
               <img
-                src={rating(testimonials_[card2].rating)}
+                src={`/${
+                  ratings.find(
+                    (rating) => testimonials_[card2].rating === rating.rating
+                  ).image
+                }`}
                 alt="rating"
                 className="w-20 mt-4"
               />

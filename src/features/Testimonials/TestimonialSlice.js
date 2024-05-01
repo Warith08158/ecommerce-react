@@ -13,7 +13,6 @@ const testmonialSlice = createSlice({
   initialState,
   reducers: {
     previous: (state, { payload: current }) => {
-      console.log(current);
       if (current === 0) {
         return;
       }
