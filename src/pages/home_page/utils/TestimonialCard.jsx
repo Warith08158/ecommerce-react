@@ -1,5 +1,5 @@
 import React from "react";
-import { rating } from "../../../assets/Ratings/ratings";
+import { rating } from "../../../../public/Ratings/ratings";
 import { arrowLeft, arrowRight } from "../../../assets/Icons/Icons";
 import { useDispatch, useSelector } from "react-redux";
 import {

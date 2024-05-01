@@ -22,7 +22,6 @@ const testmonialSlice = createSlice({
       state.card3 = state.card3 - 1;
     },
     next: (state, { payload: current }) => {
-      console.log(current);
       if (current === state.testimonials_.length - 1) {
         return;
       }
