@@ -3,6 +3,11 @@ export default {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        xxxs: "256px",
+        xxs: "384px",
+        xs: "512px",
+      },
       backgroundImage: {
         "deals-bg": "url('/src/assets/images/dealsBackground.png')",
         "pinkyBinders-bg": "url('/src/assets/images/pinkyBindersBg.jpg')",

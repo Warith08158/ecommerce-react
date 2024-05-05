@@ -7,6 +7,10 @@ import highQuality from "./highQuality.svg";
 import warranty from "./warrantyProtection.svg";
 import freeShipping from "./freeShipping.svg";
 import dedicatedSupport from "./dedicatedSupport.svg";
+import cartBtn from "./cartBtn.jpg";
+import personBtn from "./personBtn.jpg";
+import favouriteBtn from "./favouriteBtn.jpg";
+import searchBtn from "./searchBtn.jpg";
 
 export {
   hamburger,
@@ -18,4 +22,8 @@ export {
   warranty,
   freeShipping,
   dedicatedSupport,
+  cartBtn,
+  personBtn,
+  favouriteBtn,
+  searchBtn,
 };

@@ -17,8 +17,9 @@ const Deals = () => {
             explicabo veritatis modi tempora illum cupiditate placeat voluptates
             atque molestiae vel, ipsa dignissimos eum harum.
           </p>
-          <Link to="/shopping/shop"></Link>
-          <Button text={"Buy Now"} />
+          <Link to="/shopping/shop">
+            <Button text={"Buy Now"} />
+          </Link>
           <div className="flex flex-col items-start gap-1">
             <h3 className="text-lightGray text-lg">
               Hurry, Before It's Too Late!

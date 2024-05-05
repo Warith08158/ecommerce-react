@@ -2,7 +2,7 @@ import React from "react";
 import { Button, STOPSHOP } from "../../../components/components";
 import { Link } from "react-router-dom";
 import { hamburger } from "../../../assets/Icons/Icons";
-import Menu from "../utils/Menu";
+import Menu from "../../../components/Menu";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../../../features/menu/menuSlice";
 

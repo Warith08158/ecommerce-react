@@ -16,10 +16,13 @@ const NewArrivalsGallery = () => {
 
   return (
     <div>
-      <div className="container mt-16 w-[85%] mx-auto items-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+      <div className="lg:container mt-16 mx-auto items-center grid xxxs:grid-cols-1 xxs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
         {allProducts.map((product) => (
-          <div key={product.id} className="flex justify-center">
-            <div className="flex  w-[80%] p-4 sm:w-48 rounded-md shadow-lg flex-col gap-3">
+          <div
+            key={product.id}
+            className="flex justify-center rounded-md shadow-lg"
+          >
+            <div className="flex p-4 sm:w-48 flex-col gap-3">
               <div className="flex justify-center">
                 <img
                   src={`/${product.image}`}
