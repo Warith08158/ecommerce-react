@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showMore } from "../../../features/newArrivalsGaallery/newArrivalsGallerySlice";
 import { ratings } from "../../../data/ratings";
+import { Link } from "react-router-dom";
 
 const NewArrivalsGallery = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,10 @@ const NewArrivalsGallery = () => {
     <div>
       <div className="lg:container mt-16 mx-auto items-center grid xxxs:grid-cols-1 xxs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
         {allProducts.map((product) => (
-          <div
+          <Link
+            to={`shopping/product/${product.id}`}
             key={product.id}
-            className="flex justify-center rounded-md shadow-lg"
+            className="flex justify-center rounded-md shadow-lg cursor-pointer"
           >
             <div className="flex p-4 sm:w-48 flex-col gap-3">
               <div className="flex justify-center">
@@ -56,7 +58,7 @@ const NewArrivalsGallery = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       {products.length > 8 && allProducts.length !== products.length && (

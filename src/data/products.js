@@ -32,7 +32,20 @@ export const products = [
     priceCents: 799,
     keywords: ["tshirts", "apparel", "mens"],
     type: "clothing",
-    sizeChartLink: "images/clothing-size-chart.png",
+    variations: [
+      {
+        type: "black",
+        path: "adults-plain-cotton-tshirt-2-pack-black.jpg",
+      },
+      {
+        type: "red",
+        path: "adults-plain-cotton-tshirt-2-pack-red.jpg",
+      },
+      {
+        type: "plus-black",
+        path: "adults-plain-cotton-tshirt-2-pack-plus-black.jpg",
+      },
+    ],
   },
   {
     id: "54e0eccd-8f36-462b-b68a-8182611d9add",
@@ -77,6 +90,12 @@ export const products = [
     },
     priceCents: 2400,
     keywords: ["hoodies", "sweaters", "apparel"],
+    variations: [
+      {
+        type: "teal",
+        path: "plain-hooded-fleece-sweatshirt-teal.jpg",
+      },
+    ],
   },
   {
     id: "77919bbe-0e56-475b-adde-4f24dfed3a04",
@@ -88,6 +107,12 @@ export const products = [
     },
     priceCents: 3599,
     keywords: ["bathroom", "washroom", "restroom", "towels", "bath towels"],
+    variations: [
+      {
+        type: "lavender",
+        path: "luxury-tower-set-4-piece.jpg",
+      },
+    ],
   },
   {
     id: "3fdfe8d6-9a15-4979-b459-585b0d0545b9",
@@ -99,6 +124,12 @@ export const products = [
     },
     priceCents: 2899,
     keywords: ["bathroom", "cleaning"],
+    variations: [
+      {
+        type: "lavender",
+        path: "liquid-laundry-detergent-lavender.jpg",
+      },
+    ],
   },
   {
     id: "58b4fc92-e98c-42aa-8c55-b6b79996769a",
@@ -134,6 +165,13 @@ export const products = [
     },
     priceCents: 1560,
     keywords: ["accessories", "shades"],
+
+    variations: [
+      {
+        type: "gold",
+        path: "round-sunglasses-gold.jpg",
+      },
+    ],
   },
   {
     id: "04701903-bc79-49c6-bc11-1af7e3651358",
@@ -167,6 +205,16 @@ export const products = [
     },
     priceCents: 1699,
     keywords: ["shorts", "apparel", "mens"],
+    variations: [
+      {
+        type: "beige",
+        path: "men-slim-fit-summer-shorts-beige.jpg",
+      },
+      {
+        type: "black",
+        path: "men-slim-fit-summer-shorts-black.jpg",
+      },
+    ],
   },
   {
     id: "c2a82c5e-aff4-435f-9975-517cfaba2ece",
@@ -224,6 +272,16 @@ export const products = [
     keywords: ["hooded", "hoodies", "sweaters", "womens", "apparel"],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png",
+    variations: [
+      {
+        type: "blue",
+        path: "women-stretch-popover-hoodie-blue.jpg",
+      },
+      {
+        type: "gray",
+        path: "women-stretch-popover-hoodie-gray.jpg",
+      },
+    ],
   },
   {
     id: "a93a101d-79ef-4cf3-a6cf-6dbe532a1b4a",
@@ -246,6 +304,16 @@ export const products = [
     },
     priceCents: 2640,
     keywords: ["shoes", "flats", "womens", "footwear"],
+    variations: [
+      {
+        type: "gray",
+        path: "women-knit-ballet-flat-gray.jpg",
+      },
+      {
+        type: "leopard",
+        path: "women-knit-ballet-flat-leopard.jpg",
+      },
+    ],
   },
   {
     id: "8b5a2ee1-6055-422a-a666-b34ba28b76d4",
@@ -259,6 +327,16 @@ export const products = [
     keywords: ["tshirts", "shirts", "apparel", "mens"],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png",
+    variations: [
+      {
+        type: "black",
+        path: "men-golf-polo-t-shirt-black.jpg",
+      },
+      {
+        type: "red",
+        path: "men-golf-polo-t-shirt-red.jpg",
+      },
+    ],
   },
   {
     id: "b86ddc8b-3501-4b17-9889-a3bad6fb585f",
@@ -270,6 +348,12 @@ export const products = [
     },
     priceCents: 8300,
     keywords: ["garbage", "bins", "cans", "kitchen"],
+    variations: [
+      {
+        type: "30-litre",
+        path: "trash-can-with-foot-pedal-30-liter-tall.jpg",
+      },
+    ],
   },
   {
     id: "19c6a64a-5463-4d45-9af8-e41140a4100c",
@@ -281,6 +365,20 @@ export const products = [
     },
     priceCents: 2399,
     keywords: ["bedroom", "bed sheets", "sheets", "covers", "home"],
+    variations: [
+      {
+        type: "blue-queen",
+        path: "duvet-cover-set-blue-queen.jpg",
+      },
+      {
+        type: "red-queen",
+        path: "duvet-cover-set-red-queen.jpg",
+      },
+      {
+        type: "red-twin",
+        path: "duvet-cover-set-red-twin.jpg",
+      },
+    ],
   },
   {
     id: "d2785924-743d-49b3-8f03-ec258e640503",
@@ -303,6 +401,16 @@ export const products = [
     },
     priceCents: 2290,
     keywords: ["pants", "apparel", "mens"],
+    variations: [
+      {
+        type: "black",
+        path: "men-chino-pants-black.jpg",
+      },
+      {
+        type: "green",
+        path: "men-chino-pants-green.jpg",
+      },
+    ],
   },
   {
     id: "1c079479-8586-494f-ab53-219325432536",
@@ -314,6 +422,12 @@ export const products = [
     },
     priceCents: 3890,
     keywords: ["shoes", "running shoes", "footwear", "mens"],
+    variations: [
+      {
+        type: "black",
+        path: "men-athletic-shoes-black.jpg",
+      },
+    ],
   },
   {
     id: "4df68c27-fd59-4a6a-bbd1-e754ddb6d53c",
@@ -325,6 +439,12 @@ export const products = [
     },
     priceCents: 1690,
     keywords: ["sunglasses", "glasses", "accessories", "shades"],
+    variations: [
+      {
+        type: "silver",
+        path: "men-navigator-sunglasses-silver.jpg",
+      },
+    ],
   },
   {
     id: "4e37dd03-3b23-4bc6-9ff8-44e112a92c64",
@@ -358,6 +478,12 @@ export const products = [
     },
     priceCents: 2400,
     keywords: ["pants", "sweatpants", "jogging", "apparel", "womens"],
+    variations: [
+      {
+        type: "gray",
+        path: "women-french-terry-fleece-jogger-gray.jpg",
+      },
+    ],
   },
   {
     id: "d339adf3-e004-4c20-a120-40e8874c66cb",
@@ -468,5 +594,11 @@ export const products = [
     },
     priceCents: 2400,
     keywords: ["sweaters", "hoodies", "apparel", "mens"],
+    variations: [
+      {
+        type: "black",
+        path: "men-cozy-fleece-zip-up-hoodie-black.jpg",
+      },
+    ],
   },
 ];
