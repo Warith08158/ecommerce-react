@@ -17,19 +17,19 @@ const NewArrivalsGallery = () => {
 
   return (
     <div>
-      <div className="lg:container mt-16 mx-auto items-center grid xxxs:grid-cols-1 xxs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
+      <div className="lg:container mt-16 mx-auto items-center grid xxs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
         {allProducts.map((product) => (
           <Link
             to={`shopping/product/${product.id}`}
             key={product.id}
-            className="flex justify-center rounded-md shadow-lg cursor-pointer"
+            className="flex justify-center rounded-md shadow-md cursor-pointer"
           >
             <div className="flex p-4 sm:w-48 flex-col gap-3">
-              <div className="flex justify-center">
+              <div className="flex justify-center max-h-44 max-w-44">
                 <img
                   src={`/${product.image}`}
                   alt={product.name}
-                  className="object-contain max-h-44 sm:w-32 sm:h-32"
+                  className="object-contain w-full h-full"
                 />
               </div>
 

@@ -4,8 +4,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        xxxs: "256px",
-        xxs: "384px",
+        xxs: "320px",
         xs: "512px",
       },
       backgroundImage: {
