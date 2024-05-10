@@ -3,6 +3,7 @@ import {
   menuSlice,
   dealsGallerySlice,
   newArrivalsGallerySlice,
+  shoppingSlice,
 } from "../features/features";
 import { testimonialSlice } from "../features/Testimonials/Testimonials";
 
@@ -12,5 +13,6 @@ export const store = configureStore({
     gallery: dealsGallerySlice,
     newArrivalsGallery: newArrivalsGallerySlice,
     testimonial: testimonialSlice,
+    shopping: shoppingSlice,
   },
 });

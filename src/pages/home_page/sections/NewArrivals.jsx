@@ -84,6 +84,7 @@ const NewArrivals = () => {
             </button>
           </div>
         </div>
+
         <NewArrivalsGallery />
       </div>
     </section>

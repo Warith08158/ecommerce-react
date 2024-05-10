@@ -17,7 +17,7 @@ const NewArrivalsGallery = () => {
 
   return (
     <div>
-      <div className="lg:container mt-16 mx-auto items-center grid xxs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
+      <div className="lg:container mt-16 mx-auto items-end grid xxs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
         {allProducts.map((product) => (
           <Link
             to={`shopping/product/${product.id}`}
