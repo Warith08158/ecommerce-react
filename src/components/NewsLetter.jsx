@@ -3,7 +3,7 @@ import { Button } from "./components";
 
 const NewsLetter = () => {
   return (
-    <section className="pt-20 pb-10 container">
+    <section className="pt-28 pb-10 container">
       <div className="xl:bg-newsLetter-bg bg-center bg-none bg-cover">
         <h1 className="text-left md:text-center xl:pt-[130px] font-volkhov text-lightGray font-medium text-2xl lg:text-3xl">
           Subscribe To Our Newsletter
