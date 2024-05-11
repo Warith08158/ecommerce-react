@@ -7,6 +7,7 @@ import Features from "./Features";
 import Gallery from "./Gallery";
 import NewsLetter from "./NewsLetter";
 import Footer from "./Footer";
+import SearchInput from "./ui/SearchInput";
 
 export {
   Navbar,
@@ -18,4 +19,5 @@ export {
   Gallery,
   NewsLetter,
   Footer,
+  SearchInput,
 };

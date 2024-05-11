@@ -6,6 +6,7 @@ import {
   filterByRating,
   filterByPrice,
 } from "../../../features/shopping/shoppingSlice";
+import { SearchInput } from "../../../components/components";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,9 @@ const Sidebar = () => {
         Filter
       </h1>
       <p className="text-black mt-2 md:mt-6">Rating</p>
+      <div className="mb-5">
+        <SearchInput />
+      </div>
       <div className="md:grid md:grid-cols-3 gap-2 mt-3 flex items-center flex-wrap">
         <div
           className={`${

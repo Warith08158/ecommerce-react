@@ -19,8 +19,7 @@ const NewArrivalsGallery = () => {
     <div>
       <div className="lg:container mt-16 mx-auto items-end grid xxs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
         {allProducts.map((product) => (
-          <Link
-            to={`shopping/product/${product.id}`}
+          <div
             key={product.id}
             className="flex justify-center rounded-md shadow-md cursor-pointer"
           >
@@ -34,7 +33,12 @@ const NewArrivalsGallery = () => {
               </div>
 
               <div className="flex flex-col items-start gap-2 mt-4">
-                <p className="text-xs max-w-[250px]">{product.name}</p>
+                <Link
+                  to={`shopping/product/${product.id}`}
+                  className="text-xs max-w-[250px]"
+                >
+                  {product.name}
+                </Link>
                 <img
                   src={`/${
                     ratings.find(
@@ -57,8 +61,14 @@ const NewArrivalsGallery = () => {
                   ${Math.floor((product.priceCents / 100) * 2)}
                 </p>
               </div>
+              <button
+                onClick={() => console.log("clicked")}
+                className="bg-orange-500 text-white rounded-md py-1 mt-2"
+              >
+                Add to Cart
+              </button>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
       {products.length > 8 && allProducts.length !== products.length && (

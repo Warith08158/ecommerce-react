@@ -31,10 +31,7 @@ const Filter = () => {
           <div className="grid md:pl-20 lg:pl-32 container grid-cols-1 xxs:grid-cols-2 items-end lg:grid-cols-3 gap-8 w-full">
             {products.map((product) => (
               <div key={product.id}>
-                <Link
-                  to={`shopping/product/${product.id}`}
-                  className="flex justify-center rounded-md shadow-md cursor-pointer"
-                >
+                <div className="flex justify-center rounded-md shadow-md cursor-pointer">
                   <div className="flex p-4 sm:w-48 flex-col gap-3">
                     <div className="flex justify-center max-h-44 max-w-44">
                       <img
@@ -45,7 +42,12 @@ const Filter = () => {
                     </div>
 
                     <div className="flex flex-col items-start gap-2 mt-4">
-                      <p className="text-xs max-w-[250px]">{product.name}</p>
+                      <Link
+                        to={`/shopping/product/${product.id}`}
+                        className="text-xs max-w-[250px]"
+                      >
+                        {product.name}
+                      </Link>
                       <img
                         src={`/${
                           ratings.find(
@@ -68,11 +70,14 @@ const Filter = () => {
                         ${Math.floor((product.priceCents / 100) * 2)}
                       </p>
                     </div>
-                    <button className="bg-orange-500 text-white rounded-md py-1 mt-2">
+                    <button
+                      onClick={() => console.log("clicked")}
+                      className="bg-orange-500 text-white rounded-md py-1 mt-2"
+                    >
                       Add to Cart
                     </button>
                   </div>
-                </Link>
+                </div>
               </div>
             ))}
           </div>
