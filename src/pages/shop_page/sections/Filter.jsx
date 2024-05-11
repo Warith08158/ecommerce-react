@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "../utils/Sidebar";
-import { arrowRight } from "../../../assets/Icons/Icons";
 import { Link } from "react-router-dom";
 import { ratings } from "../../../data/ratings";
 import { useSelector } from "react-redux";
@@ -9,15 +8,14 @@ const Filter = () => {
   const products = useSelector((store) => store.shopping.dataCopy);
   return (
     <section>
-      <div className="md:flex container">
+      <div className="md:flex md:container">
+        <div className="container sticky top-0 md:hidden bg-white shadow-sm">
+          <Sidebar />
+        </div>
         <div className="hidden md:block">
           <Sidebar />
         </div>
-        <div className="md:hidden mb-6 sticky top-12">
-          <button className="bg-white rounded-full p-2 shadow">
-            <img src={arrowRight} alt="previous" className=" w-6 h-6" />
-          </button>
-        </div>
+
         {products.length === 0 ? (
           <div className="w-full">
             <h1 className="text-center">Filter Not found</h1>
@@ -63,6 +61,9 @@ const Filter = () => {
                         ${Math.floor((product.priceCents / 100) * 2)}
                       </p>
                     </div>
+                    <button className="bg-orange-500 text-white rounded-md py-1 mt-2">
+                      Add to Cart
+                    </button>
                   </div>
                 </Link>
               </div>

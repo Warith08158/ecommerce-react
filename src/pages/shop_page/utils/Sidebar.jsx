@@ -35,12 +35,12 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="max-w-md sticky top-28 pr-10">
+    <div className="md:max-w-md md:sticky md:top-28 md:pr-10 pb-1 mb-4 md:mb-0 md:pb-0">
       <h1 className="font-volkhov text-lightGray font-medium text-2xl lg:text-3xl text-left">
         Filter
       </h1>
-      <p className="text-black mt-6">Rating</p>
-      <div className="grid grid-cols-3 gap-2 mt-3">
+      <p className="text-black mt-2 md:mt-6">Rating</p>
+      <div className="md:grid md:grid-cols-3 gap-2 mt-3 flex items-center flex-wrap">
         <div
           className={`${
             items.every(
@@ -70,7 +70,7 @@ const Sidebar = () => {
       </div>
 
       <p className="text-black mt-6">Price</p>
-      <div className="mt-3 text-xs text-black space-y-4">
+      <div className="mt-3 text-xs text-black flex items-center flex-row flex-wrap md:items-start gap-6 mb-6 md:mb-0 md:flex-col md:gap-4">
         <div
           className={`${
             filteredPrice.length === 0
