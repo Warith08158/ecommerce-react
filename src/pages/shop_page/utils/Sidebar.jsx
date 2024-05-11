@@ -9,7 +9,7 @@ import {
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const { dataCopy: items, filteredPrice } = useSelector(
+  const { dataCopy: items, price: filteredPrice } = useSelector(
     (store) => store.shopping
   );
   const ratings = [];
@@ -49,7 +49,7 @@ const Sidebar = () => {
               ? "hover:bg-lightGray/10 hover:text-lightGray cursor-pointer"
               : "bg-lightGray text-white"
           } border border-lightGray rounded-lg flex items-center justify-center px-3 py-1`}
-          onClick={() => dispatch(displayAll())}
+          onClick={() => dispatch(filterByRating("All"))}
         >
           All
         </div>
@@ -73,7 +73,7 @@ const Sidebar = () => {
       <div className="mt-3 text-xs text-black flex items-center flex-row flex-wrap md:items-start gap-6 mb-6 md:mb-0 md:flex-col md:gap-4">
         <div
           className={`${
-            filteredPrice.length === 0
+            filteredPrice === "All"
               ? "text-lightGray/60 cursor-not-allowed"
               : "cursor-pointer text-lightGray"
           }`}

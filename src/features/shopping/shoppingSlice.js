@@ -5,45 +5,78 @@ const initialState = {
   dataCopy: [...products],
   dataOnRating: [],
   filteredPrice: [],
-  price: null,
-  rating: null,
+  price: "All",
+  rating: "All",
 };
 
 const shopping = createSlice({
   name: "shopping",
   initialState,
   reducers: {
-    displayAll: (state) => {
-      state.dataCopy = [...products];
-      state.dataOnRating = [...products];
-    },
     filterByRating: (store, { payload: rating }) => {
       store.rating = rating;
-      const newData = (store.dataCopy = products.filter(
-        (product) => product.rating.stars === rating
-      ));
-      store.dataCopy = newData;
-      store.dataOnRating = newData;
+      if (store.price === "All" && rating === "All") {
+        store.dataCopy = [...products];
+        return;
+      }
+
+      if (store.price === "All" && rating !== "All") {
+        store.dataCopy = products.filter(
+          (product) => product.rating.stars === rating
+        );
+        return;
+      }
+
+      if (store.price !== "All" && rating === "All") {
+        store.dataCopy = products.filter((product) =>
+          store.price.includes(product.priceCents)
+        );
+        return;
+      }
+
+      if (store.price !== "All" && rating !== "All") {
+        const data = products.filter(
+          (product) => product.rating.stars === rating
+        );
+
+        store.dataCopy = data.filter((product) =>
+          store.price.includes(product.priceCents)
+        );
+        return;
+      }
     },
     filterByPrice: (store, { payload: prices }) => {
-      if (prices === "All") {
-        store.price = "All";
+      store.price = prices;
+      if (prices === "All" && store.rating === "All") {
+        store.dataCopy = [...products];
+
+        return;
+      }
+
+      if (prices === "All" && store.rating !== "All") {
         store.dataCopy = products.filter(
           (product) => product.rating.stars === store.rating
         );
-        store.filteredPrice = [];
+
         return;
       }
-      let newData = [];
-      store.dataCopy.forEach((item) =>
-        prices.forEach((price) => {
-          if (price === item.priceCents) {
-            newData.push(item);
-          }
-        })
-      );
-      store.dataCopy = newData;
-      store.filteredPrice = prices;
+
+      if (prices !== "All" && store.rating === "All") {
+        store.dataCopy = products.filter((product) =>
+          store.price.includes(product.priceCents)
+        );
+        return;
+      }
+
+      if (prices !== "All" && store.rating !== "All") {
+        const data = products.filter((product) =>
+          prices.includes(product.priceCents)
+        );
+        store.dataCopy = data.filter(
+          (product) => product.rating.stars === store.rating
+        );
+        return;
+      }
     },
   },
 });
