@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { products } from "../../../data/products";
-import { displayAll } from "../../../features/shopping/shoppingSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterByRating,
@@ -10,6 +9,7 @@ import { SearchInput } from "../../../components/components";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const [FilterBar, setFilterBar] = useState(true);
   const { dataCopy: items, price: filteredPrice } = useSelector(
     (store) => store.shopping
   );
@@ -36,75 +36,181 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="md:max-w-md md:sticky md:top-28 md:pr-10 pb-1 mb-4 md:mb-0 md:pb-0 pt-16 md:pt-0">
-      <h1 className="font-volkhov text-lightGray font-medium text-2xl lg:text-3xl text-left">
-        Filter
-      </h1>
-      <p className="text-black mt-2 md:mt-6">Rating</p>
-      <div className="mb-5">
-        <SearchInput />
-      </div>
-      <div className="md:grid md:grid-cols-3 gap-2 mt-3 flex items-center flex-wrap">
-        <div
-          className={`${
-            items.every(
-              (itemRating) => itemRating.rating.stars === items[0].rating.stars
-            )
-              ? "hover:bg-lightGray/10 hover:text-lightGray cursor-pointer"
-              : "bg-lightGray text-white"
-          } border border-lightGray rounded-lg flex items-center justify-center px-3 py-1`}
-          onClick={() => dispatch(filterByRating("All"))}
-        >
-          All
-        </div>
-        {ratings.map((rating, i) => (
-          <div
-            onClick={() => dispatch(filterByRating(rating))}
-            key={rating + i + i}
-            className={`${
-              items.every((itemRating) => itemRating.rating.stars === rating) &&
-              items.length !== 0
-                ? "bg-lightGray text-white"
-                : "hover:bg-lightGray/10 hover:text-lightGray cursor-pointer"
-            } border border-lightGray rounded-lg flex items-center justify-center px-3 py-1`}
-          >
-            <p>{rating}</p>
+    <>
+      {FilterBar ? (
+        <div className="md:hidden pt-16 pb-1">
+          <div className="font-volkhov text-lightGray font-medium text-2xl lg:text-3xl text-left relative">
+            <h1>Filter</h1>
+            <button
+              className="absolute md:hidden right-0 top-0"
+              onClick={() => setFilterBar(false)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
           </div>
-        ))}
-      </div>
+          <div className="mb-5">
+            <SearchInput />
+          </div>
+          <p className="text-black mt-2 md:mt-6">Rating</p>
 
-      <p className="text-black mt-6">Price</p>
-      <div className="mt-3 text-xs text-black flex items-center flex-row flex-wrap md:items-start gap-6 mb-6 md:mb-0 md:flex-col md:gap-4">
-        <div
-          className={`${
-            filteredPrice === "All"
-              ? "text-lightGray/60 cursor-not-allowed"
-              : "cursor-pointer text-lightGray"
-          }`}
-          onClick={() => {
-            dispatch(filterByPrice("All"));
-          }}
-        >
-          All
+          <div className="md:grid md:grid-cols-3 gap-2 mt-3 flex items-center flex-wrap">
+            <div
+              className={`${
+                items.every(
+                  (itemRating) =>
+                    itemRating.rating.stars === items[0].rating.stars
+                )
+                  ? "hover:bg-lightGray/10 hover:text-lightGray cursor-pointer"
+                  : "bg-lightGray text-white"
+              } border border-lightGray rounded-lg flex items-center justify-center px-3 py-1`}
+              onClick={() => dispatch(filterByRating("All"))}
+            >
+              All
+            </div>
+            {ratings.map((rating, i) => (
+              <div
+                onClick={() => dispatch(filterByRating(rating))}
+                key={rating + i + i}
+                className={`${
+                  items.every(
+                    (itemRating) => itemRating.rating.stars === rating
+                  ) && items.length !== 0
+                    ? "bg-lightGray text-white"
+                    : "hover:bg-lightGray/10 hover:text-lightGray cursor-pointer"
+                } border border-lightGray rounded-lg flex items-center justify-center px-3 py-1`}
+              >
+                <p>{rating}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-black mt-6">Price</p>
+          <div className="mt-3 text-xs text-black flex items-center flex-row flex-wrap md:items-start gap-6 mb-6 md:mb-0 md:flex-col md:gap-4">
+            <div
+              className={`${
+                filteredPrice === "All"
+                  ? "text-lightGray/60 cursor-not-allowed"
+                  : "cursor-pointer text-lightGray"
+              }`}
+              onClick={() => {
+                dispatch(filterByPrice("All"));
+              }}
+            >
+              All
+            </div>
+            {subPrices.map((subPrice, i) => (
+              <div
+                key={i + i}
+                className={`${
+                  subPrice.toString() === filteredPrice.toString()
+                    ? "text-lightGray/60 cursor-not-allowed"
+                    : "cursor-pointer text-lightGray"
+                }`}
+                onClick={() => {
+                  dispatch(filterByPrice(subPrice));
+                }}
+              >
+                ${Math.floor(subPrice[0] / 100)} - $
+                {Math.floor(subPrice[subPrice.length - 1] / 100)}
+              </div>
+            ))}
+          </div>
         </div>
-        {subPrices.map((subPrice, i) => (
+      ) : (
+        <button
+          className="sticky pt-14 pb-2 text-sm text-lightGray"
+          onClick={() => setFilterBar(true)}
+        >
+          open filter bar
+        </button>
+      )}
+
+      <div className="hidden md:block md:max-w-md md:sticky md:top-28 md:pr-10 pb-1 mb-4 md:mb-0 md:pb-0 md:pt-0">
+        <div className="font-volkhov text-lightGray font-medium text-2xl lg:text-3xl text-left relative">
+          <h1>Filter</h1>
+        </div>
+        <div className="mb-5">
+          <SearchInput />
+        </div>
+        <p className="text-black mt-2 md:mt-6">Rating</p>
+
+        <div className="md:grid md:grid-cols-3 gap-2 mt-3 flex items-center flex-wrap">
           <div
-            key={i + i}
             className={`${
-              subPrice.toString() === filteredPrice.toString()
+              items.every(
+                (itemRating) =>
+                  itemRating.rating.stars === items[0].rating.stars
+              )
+                ? "hover:bg-lightGray/10 hover:text-lightGray cursor-pointer"
+                : "bg-lightGray text-white"
+            } border border-lightGray rounded-lg flex items-center justify-center px-3 py-1`}
+            onClick={() => dispatch(filterByRating("All"))}
+          >
+            All
+          </div>
+          {ratings.map((rating, i) => (
+            <div
+              onClick={() => dispatch(filterByRating(rating))}
+              key={rating + i + i}
+              className={`${
+                items.every(
+                  (itemRating) => itemRating.rating.stars === rating
+                ) && items.length !== 0
+                  ? "bg-lightGray text-white"
+                  : "hover:bg-lightGray/10 hover:text-lightGray cursor-pointer"
+              } border border-lightGray rounded-lg flex items-center justify-center px-3 py-1`}
+            >
+              <p>{rating}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-black mt-6">Price</p>
+        <div className="mt-3 text-xs text-black flex items-center flex-row flex-wrap md:items-start gap-6 mb-6 md:mb-0 md:flex-col md:gap-4">
+          <div
+            className={`${
+              filteredPrice === "All"
                 ? "text-lightGray/60 cursor-not-allowed"
                 : "cursor-pointer text-lightGray"
             }`}
             onClick={() => {
-              dispatch(filterByPrice(subPrice));
+              dispatch(filterByPrice("All"));
             }}
           >
-            ${Math.floor(subPrice[0] / 100)} - $
-            {Math.floor(subPrice[subPrice.length - 1] / 100)}
+            All
           </div>
-        ))}
+          {subPrices.map((subPrice, i) => (
+            <div
+              key={i + i}
+              className={`${
+                subPrice.toString() === filteredPrice.toString()
+                  ? "text-lightGray/60 cursor-not-allowed"
+                  : "cursor-pointer text-lightGray"
+              }`}
+              onClick={() => {
+                dispatch(filterByPrice(subPrice));
+              }}
+            >
+              ${Math.floor(subPrice[0] / 100)} - $
+              {Math.floor(subPrice[subPrice.length - 1] / 100)}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
