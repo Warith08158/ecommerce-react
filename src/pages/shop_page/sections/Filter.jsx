@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../utils/Sidebar";
 import { Link } from "react-router-dom";
 import { ratings } from "../../../data/ratings";
@@ -11,7 +11,13 @@ import {
 import GalleryImages from "../../../components/GalleryImages";
 
 const Filter = () => {
+  const [num, setNum] = useState(0);
   const products = useSelector((store) => store.shopping.dataCopy);
+  const nextGallery = [];
+  for (let index = 0; index < products.length / 6; index++) {
+    nextGallery.push(index + 1);
+  }
+
   return (
     <section>
       <div className="md:flex md:container">
@@ -25,11 +31,69 @@ const Filter = () => {
         </div>
         {products.length === 0 ? (
           <div className="w-full">
-            <h1 className="text-center">Filter Not found</h1>
+            <h1 className="text-center mt-3 md:mt-0">Filter Not found</h1>
           </div>
         ) : (
           <div className="grid md:pl-20 lg:pl-32 container grid-cols-1 xxs:grid-cols-2 items-end lg:grid-cols-3 gap-8 w-full">
-            {products.map((product) => (
+            {Array.from({ length: 6 }, (_, index) => (
+              <div key={index}>
+                <div className="flex justify-center rounded-md shadow-md cursor-pointer">
+                  {products[index + num]?.name ? (
+                    <div className="flex p-4 sm:w-48 flex-col gap-3">
+                      <div className="flex justify-center max-h-44 max-w-44">
+                        <img
+                          src={`/${products[index + num]?.image}`}
+                          alt={products[index + num]?.name}
+                          className="object-contain w-full h-full"
+                        />
+                      </div>
+
+                      <div className="flex flex-col items-start gap-2 mt-4">
+                        <Link
+                          to={`/shopping/product/${products[index + num]?.id}`}
+                          className="text-xs max-w-[250px]"
+                        >
+                          {products[index + num]?.name}
+                        </Link>
+                        <img
+                          src={`/${
+                            ratings.find(
+                              (rating) =>
+                                products[index + num]?.rating.stars ===
+                                rating.rating
+                            )?.image
+                          }`}
+                          alt="rating"
+                          className="h-4 object-contain"
+                        />
+                      </div>
+
+                      <p className="text-xs text-lightGray mt-1">
+                        ({products[index + num]?.rating.count}) reviews
+                      </p>
+                      <div className="mt-1 flex items-center justify-between">
+                        <p className="text-base text-lightGray oldstyle-nums">
+                          ${Math.floor(products[index + num]?.priceCents / 100)}
+                        </p>
+                        <p className="text-sm text-lightGrayWhite line-through">
+                          $
+                          {Math.floor(
+                            (products[index + num]?.priceCents / 100) * 2
+                          )}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => console.log("clicked")}
+                        className="bg-orange-500 text-white rounded-md py-1 mt-2"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+            {/* {products.map((product, i) => (
               <div key={product.id}>
                 <div className="flex justify-center rounded-md shadow-md cursor-pointer">
                   <div className="flex p-4 sm:w-48 flex-col gap-3">
@@ -79,10 +143,31 @@ const Filter = () => {
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         )}
       </div>
+      {products.length > 6 ? (
+        <div className="mt-8 container flex items-center justify-center md:justify-end md:pr-8 gap-3">
+          {nextGallery.map((next) => (
+            <button
+              key={next}
+              onClick={() => setNum(next)}
+              className="bg-lightGray/20 py-1 px-3 rounded-full text-black"
+            >
+              {next}
+            </button>
+          ))}
+          {products.length % 6 ? (
+            <button
+              onClick={() => setNum(nextGallery.length + 1)}
+              className="bg-lightGray/20 py-1 px-3 rounded-full text-black"
+            >
+              {nextGallery.length + 1}
+            </button>
+          ) : null}
+        </div>
+      ) : null}
       <div className="mt-10">
         <PinkyBinder />
         <GalleryImages />
@@ -94,3 +179,57 @@ const Filter = () => {
 };
 
 export default Filter;
+
+{
+  /* {products.map((product, i) => (
+              <div key={product.id}>
+                <div className="flex justify-center rounded-md shadow-md cursor-pointer">
+                  <div className="flex p-4 sm:w-48 flex-col gap-3">
+                    <div className="flex justify-center max-h-44 max-w-44">
+                      <img
+                        src={`/${product.image}`}
+                        alt={product.name}
+                        className="object-contain w-full h-full"
+                      />
+                    </div>
+
+                    <div className="flex flex-col items-start gap-2 mt-4">
+                      <Link
+                        to={`/shopping/product/${product.id}`}
+                        className="text-xs max-w-[250px]"
+                      >
+                        {product.name}
+                      </Link>
+                      <img
+                        src={`/${
+                          ratings.find(
+                            (rating) => product.rating.stars === rating.rating
+                          ).image
+                        }`}
+                        alt="rating"
+                        className="h-4 object-contain"
+                      />
+                    </div>
+
+                    <p className="text-xs text-lightGray mt-1">
+                      ({product.rating.count}) reviews
+                    </p>
+                    <div className="mt-1 flex items-center justify-between">
+                      <p className="text-base text-lightGray oldstyle-nums">
+                        ${Math.floor(product.priceCents / 100)}
+                      </p>
+                      <p className="text-sm text-lightGrayWhite line-through">
+                        ${Math.floor((product.priceCents / 100) * 2)}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => console.log("clicked")}
+                      className="bg-orange-500 text-white rounded-md py-1 mt-2"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))} */
+}
