@@ -13,11 +13,11 @@ import GalleryImages from "../../../components/GalleryImages";
 const Filter = () => {
   const [num, setNum] = useState(0);
   const products = useSelector((store) => store.shopping.dataCopy);
+  console.log(products.length);
   const nextGallery = [];
-  for (let index = 0; index < products.length / 6; index++) {
+  for (let index = 0; index < Math.floor(products.length / 6); index++) {
     nextGallery.push(index + 1);
   }
-
   return (
     <section>
       <div className="md:flex md:container">
@@ -152,7 +152,7 @@ const Filter = () => {
           {nextGallery.map((next) => (
             <button
               key={next}
-              onClick={() => setNum(next)}
+              onClick={() => setNum(next - 1 + 5 * (next - 1))}
               className="bg-lightGray/20 py-1 px-3 rounded-full text-black"
             >
               {next}
@@ -160,7 +160,7 @@ const Filter = () => {
           ))}
           {products.length % 6 ? (
             <button
-              onClick={() => setNum(nextGallery.length + 1)}
+              onClick={() => setNum((prev) => prev + 6 * nextGallery.length)}
               className="bg-lightGray/20 py-1 px-3 rounded-full text-black"
             >
               {nextGallery.length + 1}
