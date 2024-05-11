@@ -18,57 +18,57 @@ const Filter = () => {
             <img src={arrowRight} alt="previous" className=" w-6 h-6" />
           </button>
         </div>
+        {products.length === 0 ? (
+          <div className="w-full">
+            <h1 className="text-center">Filter Not found</h1>
+          </div>
+        ) : (
+          <div className="grid md:pl-20 lg:pl-32 container grid-cols-1 xxs:grid-cols-2 items-end lg:grid-cols-3 gap-8 w-full">
+            {products.map((product) => (
+              <div key={product.id}>
+                <Link
+                  to={`shopping/product/${product.id}`}
+                  className="flex justify-center rounded-md shadow-md cursor-pointer"
+                >
+                  <div className="flex p-4 sm:w-48 flex-col gap-3">
+                    <div className="flex justify-center max-h-44 max-w-44">
+                      <img
+                        src={`/${product.image}`}
+                        alt={product.name}
+                        className="object-contain w-full h-full"
+                      />
+                    </div>
 
-        <div className="grid md:pl-20 lg:pl-32 container grid-cols-1 xxs:grid-cols-2 items-end lg:grid-cols-3 gap-8 w-full">
-          {products.map((product) => (
-            <div key={product.id}>
-              {/* <div className="pt-3 flex pl-4">
-                {product.variations ? (
-                  <div>{product.variations[0].type}</div>
-                ) : null}
-              </div> */}
-              <Link
-                to={`shopping/product/${product.id}`}
-                className="flex justify-center rounded-md shadow-md cursor-pointer"
-              >
-                <div className="flex p-4 sm:w-48 flex-col gap-3">
-                  <div className="flex justify-center max-h-44 max-w-44">
-                    <img
-                      src={`/${product.image}`}
-                      alt={product.name}
-                      className="object-contain w-full h-full"
-                    />
-                  </div>
+                    <div className="flex flex-col items-start gap-2 mt-4">
+                      <p className="text-xs max-w-[250px]">{product.name}</p>
+                      <img
+                        src={`/${
+                          ratings.find(
+                            (rating) => product.rating.stars === rating.rating
+                          ).image
+                        }`}
+                        alt="rating"
+                        className="h-4 object-contain"
+                      />
+                    </div>
 
-                  <div className="flex flex-col items-start gap-2 mt-4">
-                    <p className="text-xs max-w-[250px]">{product.name}</p>
-                    <img
-                      src={`/${
-                        ratings.find(
-                          (rating) => product.rating.stars === rating.rating
-                        ).image
-                      }`}
-                      alt="rating"
-                      className="h-4 object-contain"
-                    />
-                  </div>
-
-                  <p className="text-xs text-lightGray mt-1">
-                    ({product.rating.count}) reviews
-                  </p>
-                  <div className="mt-1 flex items-center justify-between">
-                    <p className="text-base text-lightGray oldstyle-nums">
-                      ${Math.floor(product.priceCents / 100)}
+                    <p className="text-xs text-lightGray mt-1">
+                      ({product.rating.count}) reviews
                     </p>
-                    <p className="text-sm text-lightGrayWhite line-through">
-                      ${Math.floor((product.priceCents / 100) * 2)}
-                    </p>
+                    <div className="mt-1 flex items-center justify-between">
+                      <p className="text-base text-lightGray oldstyle-nums">
+                        ${Math.floor(product.priceCents / 100)}
+                      </p>
+                      <p className="text-sm text-lightGrayWhite line-through">
+                        ${Math.floor((product.priceCents / 100) * 2)}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <div className="container mt-16">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non

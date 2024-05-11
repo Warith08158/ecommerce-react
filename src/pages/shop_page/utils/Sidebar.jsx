@@ -9,7 +9,9 @@ import {
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const items = useSelector((store) => store.shopping.dataCopy);
+  const { dataCopy: items, filteredPrice } = useSelector(
+    (store) => store.shopping
+  );
   const ratings = [];
   const prices = [];
   products.forEach((product) => {
@@ -20,7 +22,6 @@ const Sidebar = () => {
       ratings.push(product.rating.stars);
     }
   });
-
   ratings.sort((a, b) => a - b);
   prices.sort((a, b) => a - b);
 
@@ -32,8 +33,6 @@ const Sidebar = () => {
   for (let i = 0; i < prices.length; i += subarrayLength) {
     subPrices.push(prices.slice(i, i + subarrayLength));
   }
-
-  // console.log(items);
 
   return (
     <div className="max-w-md sticky top-28 pr-10">
@@ -59,7 +58,8 @@ const Sidebar = () => {
             onClick={() => dispatch(filterByRating(rating))}
             key={rating + i + i}
             className={`${
-              items.every((itemRating) => itemRating.rating.stars === rating)
+              items.every((itemRating) => itemRating.rating.stars === rating) &&
+              items.length !== 0
                 ? "bg-lightGray text-white"
                 : "hover:bg-lightGray/10 hover:text-lightGray cursor-pointer"
             } border border-lightGray rounded-lg flex items-center justify-center px-3 py-1`}
@@ -71,19 +71,27 @@ const Sidebar = () => {
 
       <p className="text-black mt-6">Price</p>
       <div className="mt-3 text-xs text-black space-y-4">
-        <div className="cursor-pointer">All</div>
+        <div
+          className={`${
+            filteredPrice.length === 0
+              ? "text-lightGray/60 cursor-not-allowed"
+              : "cursor-pointer text-lightGray"
+          }`}
+          onClick={() => {
+            dispatch(filterByPrice("All"));
+          }}
+        >
+          All
+        </div>
         {subPrices.map((subPrice, i) => (
           <div
             key={i + i}
-            className="cursor-pointer"
+            className={`${
+              subPrice.toString() === filteredPrice.toString()
+                ? "text-lightGray/60 cursor-not-allowed"
+                : "cursor-pointer text-lightGray"
+            }`}
             onClick={() => {
-              // console.log(
-              //   products.filter(
-              //     (product) =>
-              //       product.priceCents >= subPrice[0] &&
-              //       product.priceCents <= subPrice[subPrice.length - 1]
-              //   )
-              // );
               dispatch(filterByPrice(subPrice));
             }}
           >

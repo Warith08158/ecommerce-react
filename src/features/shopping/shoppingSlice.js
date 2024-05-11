@@ -4,6 +4,9 @@ import { products } from "../../data/products";
 const initialState = {
   dataCopy: [...products],
   dataOnRating: [],
+  filteredPrice: [],
+  price: null,
+  rating: null,
 };
 
 const shopping = createSlice({
@@ -15,6 +18,7 @@ const shopping = createSlice({
       state.dataOnRating = [...products];
     },
     filterByRating: (store, { payload: rating }) => {
+      store.rating = rating;
       const newData = (store.dataCopy = products.filter(
         (product) => product.rating.stars === rating
       ));
@@ -22,6 +26,14 @@ const shopping = createSlice({
       store.dataOnRating = newData;
     },
     filterByPrice: (store, { payload: prices }) => {
+      if (prices === "All") {
+        store.price = "All";
+        store.dataCopy = products.filter(
+          (product) => product.rating.stars === store.rating
+        );
+        store.filteredPrice = [];
+        return;
+      }
       let newData = [];
       store.dataCopy.forEach((item) =>
         prices.forEach((price) => {
@@ -30,8 +42,8 @@ const shopping = createSlice({
           }
         })
       );
-
       store.dataCopy = newData;
+      store.filteredPrice = prices;
     },
   },
 });
