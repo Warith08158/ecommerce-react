@@ -17,11 +17,11 @@ const Filter = () => {
     (store) => store.shopping
   );
 
-  console.log(num);
   const nextGallery = [];
   for (let index = 0; index < Math.floor(products.length / 6); index++) {
     nextGallery.push(index + 1);
   }
+
   return (
     <section>
       <div className="md:flex md:container">
@@ -108,7 +108,11 @@ const Filter = () => {
               onClick={() =>
                 dispatch(setPaginationState(next - 1 + 5 * (next - 1)))
               }
-              className="bg-lightGray/20 py-1 px-3 rounded-full text-black"
+              className={`${
+                num / 6 === next - 1
+                  ? "bg-lightGray/50 text-black"
+                  : "bg-lightGray/5 text-black"
+              } py-1 px-3 rounded-full`}
             >
               {next}
             </button>
@@ -118,7 +122,11 @@ const Filter = () => {
               onClick={() =>
                 dispatch(setPaginationState(num + 6 * nextGallery.length))
               }
-              className="bg-lightGray/20 py-1 px-3 rounded-full text-black"
+              className={`${
+                num / 6 === nextGallery.length - 1
+                  ? "bg-lightGray/50 text-black"
+                  : "bg-lightGray/5 text-black"
+              } py-1 px-3 rounded-full`}
             >
               {nextGallery.length + 1}
             </button>
