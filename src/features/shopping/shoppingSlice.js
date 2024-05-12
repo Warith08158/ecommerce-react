@@ -17,8 +17,8 @@ const shopping = createSlice({
   initialState,
   reducers: {
     filterByRating: (store, { payload: rating }) => {
-      store.value = "";
       store.paginationState = 0;
+      store.value = "";
       store.rating = rating;
       if (store.price === "All" && rating === "All") {
         store.dataCopy = [...products];
@@ -58,8 +58,8 @@ const shopping = createSlice({
       }
     },
     filterByPrice: (store, { payload: prices }) => {
-      store.value = "";
       store.paginationState = 0;
+      store.value = "";
       store.price = prices;
       if (prices === "All" && store.rating === "All") {
         const data = [...products];
@@ -102,10 +102,13 @@ const shopping = createSlice({
       }
     },
 
-    searchItem: (state, { payload: searchkeyword }) => {
-      store.paginationState = 0;
-      state.value = searchkeyword;
+    setPaginationState: (store, { payload }) => {
+      store.paginationState = payload;
+    },
 
+    searchItem: (state, { payload: searchkeyword }) => {
+      state.paginationState = 0;
+      state.value = searchkeyword;
       const data = state.dataCopy2.filter((item) =>
         item.name.toLowerCase().includes(searchkeyword.toLowerCase())
       );
@@ -116,5 +119,10 @@ const shopping = createSlice({
 
 export default shopping.reducer;
 
-export const { displayAll, filterByRating, filterByPrice, searchItem } =
-  shopping.actions;
+export const {
+  displayAll,
+  filterByRating,
+  filterByPrice,
+  searchItem,
+  setPaginationState,
+} = shopping.actions;

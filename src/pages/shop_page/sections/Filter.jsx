@@ -2,18 +2,22 @@ import React, { useState } from "react";
 import Sidebar from "../utils/Sidebar";
 import { Link } from "react-router-dom";
 import { ratings } from "../../../data/ratings";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Footer,
   NewsLetter,
   PinkyBinder,
 } from "../../../components/components";
 import GalleryImages from "../../../components/GalleryImages";
+import { setPaginationState } from "../../../features/shopping/shoppingSlice";
 
 const Filter = () => {
-  const [num, setNum] = useState(0);
-  const products = useSelector((store) => store.shopping.dataCopy);
-  console.log(products.length);
+  const dispatch = useDispatch();
+  const { dataCopy: products, paginationState: num } = useSelector(
+    (store) => store.shopping
+  );
+
+  console.log(num);
   const nextGallery = [];
   for (let index = 0; index < Math.floor(products.length / 6); index++) {
     nextGallery.push(index + 1);
@@ -93,57 +97,6 @@ const Filter = () => {
                 </div>
               </div>
             ))}
-            {/* {products.map((product, i) => (
-              <div key={product.id}>
-                <div className="flex justify-center rounded-md shadow-md cursor-pointer">
-                  <div className="flex p-4 sm:w-48 flex-col gap-3">
-                    <div className="flex justify-center max-h-44 max-w-44">
-                      <img
-                        src={`/${product.image}`}
-                        alt={product.name}
-                        className="object-contain w-full h-full"
-                      />
-                    </div>
-
-                    <div className="flex flex-col items-start gap-2 mt-4">
-                      <Link
-                        to={`/shopping/product/${product.id}`}
-                        className="text-xs max-w-[250px]"
-                      >
-                        {product.name}
-                      </Link>
-                      <img
-                        src={`/${
-                          ratings.find(
-                            (rating) => product.rating.stars === rating.rating
-                          ).image
-                        }`}
-                        alt="rating"
-                        className="h-4 object-contain"
-                      />
-                    </div>
-
-                    <p className="text-xs text-lightGray mt-1">
-                      ({product.rating.count}) reviews
-                    </p>
-                    <div className="mt-1 flex items-center justify-between">
-                      <p className="text-base text-lightGray oldstyle-nums">
-                        ${Math.floor(product.priceCents / 100)}
-                      </p>
-                      <p className="text-sm text-lightGrayWhite line-through">
-                        ${Math.floor((product.priceCents / 100) * 2)}
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => console.log("clicked")}
-                      className="bg-orange-500 text-white rounded-md py-1 mt-2"
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))} */}
           </div>
         )}
       </div>
@@ -152,7 +105,9 @@ const Filter = () => {
           {nextGallery.map((next) => (
             <button
               key={next}
-              onClick={() => setNum(next - 1 + 5 * (next - 1))}
+              onClick={() =>
+                dispatch(setPaginationState(next - 1 + 5 * (next - 1)))
+              }
               className="bg-lightGray/20 py-1 px-3 rounded-full text-black"
             >
               {next}
@@ -160,7 +115,9 @@ const Filter = () => {
           ))}
           {products.length % 6 ? (
             <button
-              onClick={() => setNum((prev) => prev + 6 * nextGallery.length)}
+              onClick={() =>
+                dispatch(setPaginationState(num + 6 * nextGallery.length))
+              }
               className="bg-lightGray/20 py-1 px-3 rounded-full text-black"
             >
               {nextGallery.length + 1}
@@ -179,57 +136,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
-{
-  /* {products.map((product, i) => (
-              <div key={product.id}>
-                <div className="flex justify-center rounded-md shadow-md cursor-pointer">
-                  <div className="flex p-4 sm:w-48 flex-col gap-3">
-                    <div className="flex justify-center max-h-44 max-w-44">
-                      <img
-                        src={`/${product.image}`}
-                        alt={product.name}
-                        className="object-contain w-full h-full"
-                      />
-                    </div>
-
-                    <div className="flex flex-col items-start gap-2 mt-4">
-                      <Link
-                        to={`/shopping/product/${product.id}`}
-                        className="text-xs max-w-[250px]"
-                      >
-                        {product.name}
-                      </Link>
-                      <img
-                        src={`/${
-                          ratings.find(
-                            (rating) => product.rating.stars === rating.rating
-                          ).image
-                        }`}
-                        alt="rating"
-                        className="h-4 object-contain"
-                      />
-                    </div>
-
-                    <p className="text-xs text-lightGray mt-1">
-                      ({product.rating.count}) reviews
-                    </p>
-                    <div className="mt-1 flex items-center justify-between">
-                      <p className="text-base text-lightGray oldstyle-nums">
-                        ${Math.floor(product.priceCents / 100)}
-                      </p>
-                      <p className="text-sm text-lightGrayWhite line-through">
-                        ${Math.floor((product.priceCents / 100) * 2)}
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => console.log("clicked")}
-                      className="bg-orange-500 text-white rounded-md py-1 mt-2"
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))} */
-}
