@@ -10,9 +10,11 @@ import {
 } from "../../../components/components";
 import GalleryImages from "../../../components/GalleryImages";
 import { setPaginationState } from "../../../features/shopping/shoppingSlice";
+import { arrowLeft, arrowRight } from "../../../assets/Icons/Icons";
 
 const Filter = () => {
   const dispatch = useDispatch();
+  const [nextTo, setNextTo] = useState(1);
   const { dataCopy: products, paginationState: num } = useSelector(
     (store) => store.shopping
   );
@@ -101,20 +103,29 @@ const Filter = () => {
         )}
       </div>
       {products.length > 6 ? (
-        <div className="mt-8 container flex items-center justify-center md:justify-end md:pr-8 gap-3">
-          {nextGallery.map((next) => (
+        <div className="mt-8 container flex items-center justify-end md:pr-8 gap-3">
+          {nextTo > 1 ? (
+            <button onClick={() => setNextTo((prev) => prev - 1)}>
+              <img src={arrowLeft} alt="arrow" className="w-4 h-4" />
+            </button>
+          ) : null}
+          {Array.from({ length: 3 }, (_, index) => (
             <button
-              key={next}
+              key={index + nextTo}
               onClick={() =>
-                dispatch(setPaginationState(next - 1 + 5 * (next - 1)))
+                dispatch(
+                  setPaginationState(
+                    index + nextTo - 1 + 5 * (index + nextTo - 1)
+                  )
+                )
               }
               className={`${
-                num / 6 === next - 1
+                num / 6 === index + nextTo - 1
                   ? "bg-lightGray/50 text-black pointer-events-none"
                   : "bg-lightGray/5 text-black"
               } py-1 px-3 rounded-full`}
             >
-              {next}
+              {index + nextTo}
             </button>
           ))}
           {products.length % 6 ? (
@@ -129,6 +140,16 @@ const Filter = () => {
               } py-1 px-3 rounded-full`}
             >
               {nextGallery.length + 1}
+            </button>
+          ) : null}
+          {nextGallery.length > 3 ? (
+            <button
+              onClick={() => setNextTo((prev) => prev + 1)}
+              className={`${
+                nextTo === nextGallery.length - 2 ? "hidden" : "cursor-pointer"
+              }`}
+            >
+              <img src={arrowRight} alt="arrow" className="w-4 h-4" />
             </button>
           ) : null}
         </div>
