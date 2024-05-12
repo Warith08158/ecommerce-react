@@ -110,7 +110,7 @@ const Filter = () => {
               }
               className={`${
                 num / 6 === next - 1
-                  ? "bg-lightGray/50 text-black"
+                  ? "bg-lightGray/50 text-black pointer-events-none"
                   : "bg-lightGray/5 text-black"
               } py-1 px-3 rounded-full`}
             >
@@ -123,8 +123,8 @@ const Filter = () => {
                 dispatch(setPaginationState(num + 6 * nextGallery.length))
               }
               className={`${
-                num / 6 === nextGallery.length - 1
-                  ? "bg-lightGray/50 text-black"
+                num / 6 === nextGallery.length
+                  ? "bg-lightGray/50 text-black pointer-events-none"
                   : "bg-lightGray/5 text-black"
               } py-1 px-3 rounded-full`}
             >
