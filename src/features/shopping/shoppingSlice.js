@@ -6,10 +6,13 @@ const initialState = {
   dataCopy2: [...products],
   dataOnRating: [],
   filteredPrice: [],
+  data: null,
   price: "All",
   rating: "All",
   value: "",
   paginationState: 0,
+  paginatedData: 0,
+  nextTo: 1,
 };
 
 const shopping = createSlice({
@@ -17,6 +20,7 @@ const shopping = createSlice({
   initialState,
   reducers: {
     filterByRating: (store, { payload: rating }) => {
+      store.nextTo = 1;
       store.paginationState = 0;
       store.value = "";
       store.rating = rating;
@@ -58,6 +62,7 @@ const shopping = createSlice({
       }
     },
     filterByPrice: (store, { payload: prices }) => {
+      store.nextTo = 1;
       store.paginationState = 0;
       store.value = "";
       store.price = prices;
@@ -103,10 +108,19 @@ const shopping = createSlice({
     },
 
     setPaginationState: (store, { payload }) => {
-      store.paginationState = payload;
+      console.log(payload);
+      store.data = store.dataCopy.slice(payload, payload + 6);
+    },
+
+    nextItem: (state, { payload }) => {
+      state.nextTo = payload;
+    },
+    previousItem: (state, { payload }) => {
+      state.nextTo = payload;
     },
 
     searchItem: (state, { payload: searchkeyword }) => {
+      state.nextTo = 1;
       state.paginationState = 0;
       state.value = searchkeyword;
       const data = state.dataCopy2.filter((item) =>
@@ -125,4 +139,6 @@ export const {
   filterByPrice,
   searchItem,
   setPaginationState,
+  nextItem,
+  previousItem,
 } = shopping.actions;
