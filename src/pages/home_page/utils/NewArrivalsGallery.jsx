@@ -21,21 +21,18 @@ const NewArrivalsGallery = () => {
         {allProducts.map((product) => (
           <div
             key={product.id}
-            className="flex justify-center rounded-md shadow-md cursor-pointer"
+            className="rounded-md shadow-md cursor-pointer p-4 h-[370px]"
           >
-            <div className="flex p-4 sm:w-48 flex-col gap-3">
-              <div className="flex justify-center max-h-44 max-w-44">
-                <img
-                  src={`/${product.image}`}
-                  alt={product.name}
-                  className="object-contain w-full h-full"
-                />
-              </div>
-
+            <div className="flex flex-col gap-3">
+              <img
+                src={`/${product.image}`}
+                alt={product.name}
+                className="object-contain h-36"
+              />
               <div className="flex flex-col items-start gap-2 mt-4">
                 <Link
-                  to={`shopping/product/${product.id}`}
-                  className="text-xs max-w-[250px]"
+                  to={`/shopping/product/${product.id}`}
+                  className="text-xs max-w-[250px] truncate w-[90%]"
                 >
                   {product.name}
                 </Link>
@@ -61,10 +58,7 @@ const NewArrivalsGallery = () => {
                   ${Math.floor((product.priceCents / 100) * 2)}
                 </p>
               </div>
-              <button
-                onClick={() => console.log("clicked")}
-                className="bg-orange-500 text-white rounded-md py-1 mt-2"
-              >
+              <button className="bg-orange-500 text-white rounded-md py-1 mt-2">
                 Add to Cart
               </button>
             </div>

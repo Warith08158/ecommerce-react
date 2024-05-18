@@ -59,7 +59,12 @@ const Navbar = () => {
           <img src={searchBtn} alt="search" className="w-4" />
           <img src={personBtn} alt="person" className="w-4" />
           <img src={favouriteBtn} alt="favourite" className="w-4" />
-          <img src={cartBtn} alt="cart" className="w-4" />
+          <div className="relative">
+            <img src={cartBtn} alt="cart" className="w-4" />
+            <div className="absolute -top-2 -right-3 px-[0.375rem] rounded-full text-xs text-white py-[0.125rem] bg-orange-400">
+              0
+            </div>
+          </div>
         </div>
       </div>
       <Menu />

@@ -76,58 +76,57 @@ const Filter = () => {
             <h1 className="text-center mt-3 md:mt-0">Filter Not found</h1>
           </div>
         ) : (
-          <div className="grid md:pl-20 lg:pl-32 container grid-cols-1 xxs:grid-cols-2 items-end lg:grid-cols-3 gap-8 w-full">
-            {products
-              .slice(currentPagination.start, currentPagination.end)
-              .map((product, i) => (
-                <div
-                  key={product.id}
-                  className="flex justify-center rounded-md shadow-md cursor-pointer"
-                >
-                  <div className="flex p-4 sm:w-48 flex-col gap-3">
-                    <div className="flex justify-center max-h-44 max-w-44">
+          <div className="w-full flex justify-end container">
+            <div className="grid grid-cols-1 xxs:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl">
+              {products
+                .slice(currentPagination.start, currentPagination.end)
+                .map((product, i) => (
+                  <div
+                    key={product.id}
+                    className="rounded-md shadow-md cursor-pointer p-4 h-[370px]"
+                  >
+                    <div className="flex flex-col gap-3">
                       <img
                         src={`/${product.image}`}
                         alt={product.name}
-                        className="object-contain w-full h-full"
+                        className="object-contain h-36"
                       />
-                    </div>
+                      <div className="flex flex-col items-start gap-2 mt-4">
+                        <Link
+                          to={`/shopping/product/${product.id}`}
+                          className="text-xs max-w-[250px] truncate w-[90%]"
+                        >
+                          {product.name}
+                        </Link>
+                        <img
+                          src={`/${
+                            ratings.find(
+                              (rating) => product.rating.stars === rating.rating
+                            ).image
+                          }`}
+                          alt="rating"
+                          className="h-4 object-contain"
+                        />
+                      </div>
 
-                    <div className="flex flex-col items-start gap-2 mt-4">
-                      <Link
-                        to={`shopping/product/${product.id}`}
-                        className="text-xs max-w-[250px]"
-                      >
-                        {product.name}
-                      </Link>
-                      <img
-                        src={`/${
-                          ratings.find(
-                            (rating) => product.rating.stars === rating.rating
-                          ).image
-                        }`}
-                        alt="rating"
-                        className="h-4 object-contain"
-                      />
-                    </div>
-
-                    <p className="text-xs text-lightGray mt-1">
-                      ({product.rating.count}) reviews
-                    </p>
-                    <div className="mt-1 flex items-center justify-between">
-                      <p className="text-base text-lightGray oldstyle-nums">
-                        ${Math.floor(product.priceCents / 100)}
+                      <p className="text-xs text-lightGray mt-1">
+                        ({product.rating.count}) reviews
                       </p>
-                      <p className="text-sm text-lightGrayWhite line-through">
-                        ${Math.floor((product.priceCents / 100) * 2)}
-                      </p>
+                      <div className="mt-1 flex items-center justify-between">
+                        <p className="text-base text-lightGray oldstyle-nums">
+                          ${Math.floor(product.priceCents / 100)}
+                        </p>
+                        <p className="text-sm text-lightGrayWhite line-through">
+                          ${Math.floor((product.priceCents / 100) * 2)}
+                        </p>
+                      </div>
+                      <button className="bg-orange-500 text-white rounded-md py-1 mt-2">
+                        Add to Cart
+                      </button>
                     </div>
-                    <button className="bg-orange-500 text-white rounded-md py-1 mt-2">
-                      Add to Cart
-                    </button>
                   </div>
-                </div>
-              ))}
+                ))}
+            </div>
           </div>
         )}
       </div>
