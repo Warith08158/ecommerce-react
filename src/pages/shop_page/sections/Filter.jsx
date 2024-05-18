@@ -21,8 +21,13 @@ const Filter = () => {
   const [currentPagination, setCurrentPagination] = useState({
     start: 0,
     end: 6,
+    num: 0,
   });
-  const [arrowNum, setArrowNum] = useState({ start: 0, end: 3, num: 1 });
+  const [arrowNum, setArrowNum] = useState({
+    start: 0,
+    end: 3,
+    num: 0,
+  });
   const {
     dataCopy: products,
     paginationState: num,
@@ -34,9 +39,12 @@ const Filter = () => {
       end: 6,
       num: 0,
     });
-    setArrowNum({ start: 0, end: 3, num: 1 });
+    setArrowNum({
+      start: 0,
+      end: 3,
+      num: 0,
+    });
   }, [products]);
-  console.log(num);
   const nextGallery = [];
   for (let index = 0; index < Math.floor(products.length / 6); index++) {
     nextGallery.push(index + 1);
@@ -51,8 +59,6 @@ const Filter = () => {
   for (let index = 0; index < pages; index++) {
     pagesArray.push(index);
   }
-
-  // console.log(data);
 
   return (
     <section>
@@ -116,10 +122,7 @@ const Filter = () => {
                         ${Math.floor((product.priceCents / 100) * 2)}
                       </p>
                     </div>
-                    <button
-                      onClick={() => console.log("clicked")}
-                      className="bg-orange-500 text-white rounded-md py-1 mt-2"
-                    >
+                    <button className="bg-orange-500 text-white rounded-md py-1 mt-2">
                       Add to Cart
                     </button>
                   </div>
@@ -130,14 +133,20 @@ const Filter = () => {
       </div>
       {products.length > 6 ? (
         <div className="mt-8 container flex items-center justify-end md:pr-8 gap-3">
-          {nextTo > 1 ? (
-            <button onClick={() => dispatch(previousItem(nextTo - 3))}>
-              <img src={arrowLeft} alt="arrow" className="w-4 h-4" />
-            </button>
-          ) : null}
+          <button
+            className={`${arrowNum.start > 0 ? "block" : "hidden"}`}
+            onClick={() =>
+              setArrowNum({
+                start: arrowNum.start - 3,
+                end: arrowNum.end - 3,
+              })
+            }
+          >
+            <img src={arrowLeft} alt="arrow" className="w-6" />
+          </button>
           {products.length > 0 && (
             <div className="flex items-center gap-3">
-              {pagesArray.slice(0, 3).map((page, i) => (
+              {pagesArray.slice(arrowNum.start, arrowNum.end).map((page, i) => (
                 <button
                   key={page}
                   className={`bg-lightGray text-black rounded-full py-1 px-3 ${
@@ -159,13 +168,18 @@ const Filter = () => {
             </div>
           )}
           {pagesArray.length > 3 ? (
-            <button>
-              <img
-                src={arrowRight}
-                alt="arrow"
-                className="w-6"
-                onClick={() => console.log("clicked")}
-              />
+            <button
+              onClick={() => {
+                setArrowNum({
+                  start: arrowNum.start + 3,
+                  end: arrowNum.end + 3,
+                });
+              }}
+              className={`${
+                arrowNum.end > pagesArray.length ? "hidden" : null
+              }`}
+            >
+              <img src={arrowRight} alt="arrow" className="w-6" />
             </button>
           ) : null}
         </div>
