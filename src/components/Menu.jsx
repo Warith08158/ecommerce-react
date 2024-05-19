@@ -29,7 +29,7 @@ const Menu = () => {
           </div>
         </ul>
       )}
-      {pathname === "/shopping/shop" && isOpen && (
+      {pathname !== "/" && isOpen && (
         <ul className="md:hidden py-4 flex bg-white w-[70%] max-w-56 shadow-md absolute right-0 top-0 bottom-0 flex-col items-start h-screen min-h-80 border-t border-t-veryLightGray">
           <div className="px-4 flex flex-col items-start gap-3">
             <li className="sm:hidden text-lightGray text-base">Home</li>

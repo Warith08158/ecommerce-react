@@ -108,7 +108,6 @@ const shopping = createSlice({
     },
 
     setPaginationState: (store, { payload }) => {
-      console.log(payload);
       store.data = store.dataCopy.slice(payload, payload + 6);
     },
 

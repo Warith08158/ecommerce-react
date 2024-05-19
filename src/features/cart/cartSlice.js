@@ -31,10 +31,6 @@ export const cartSlice = createSlice({
         state.cartItem.find((item) => item.id === itemId).quantity--;
         return;
       }
-      // state.cartItem.push({
-      //   id: itemId,
-      //   quantity: 1,
-      // });
     },
     removeFromCart: (state, { payload: itemId }) => {
       state.cartItem = state.cartItem.filter((item) => item.id !== itemId);
