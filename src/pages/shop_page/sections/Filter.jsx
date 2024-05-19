@@ -97,15 +97,17 @@ const Filter = () => {
                     className="rounded-md shadow-md cursor-pointer h-[350px]"
                   >
                     <div className="flex flex-col gap-3">
-                      <img
-                        src={`/${product.image}`}
-                        alt={product.name}
-                        className={`object-contain h-36 ${
-                          isLoading ? "hidden" : "block mx-4"
-                        }`}
-                        onLoad={handleLoad}
-                        onError={handleError}
-                      />
+                      <Link to={`/shopping/product/${product.id}`}>
+                        <img
+                          src={`/${product.image}`}
+                          alt={product.name}
+                          className={`object-contain h-36 ${
+                            isLoading ? "hidden" : "block mx-4"
+                          }`}
+                          onLoad={handleLoad}
+                          onError={handleError}
+                        />
+                      </Link>
                       {isLoading && (
                         <div className="h-36 bg-gray-100 animate-pulse flex items-center justify-center">
                           <svg
