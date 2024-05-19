@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { showMore } from "../../../features/newArrivalsGaallery/newArrivalsGallerySlice";
 import { ratings } from "../../../data/ratings";
 import { Link } from "react-router-dom";
+import { addToCart } from "../../../features/cart/cartSlice";
 
 const NewArrivalsGallery = () => {
   const dispatch = useDispatch();
@@ -91,7 +92,10 @@ const NewArrivalsGallery = () => {
                   ${Math.floor((product.priceCents / 100) * 2)}
                 </p>
               </div>
-              <button className="bg-orange-500 text-white rounded-md py-1 mt-2 mx-4">
+              <button
+                className="bg-orange-500 text-white rounded-md py-1 mt-2 mx-4"
+                onClick={() => dispatch(addToCart(product.id))}
+              >
                 Add to Cart
               </button>
             </div>

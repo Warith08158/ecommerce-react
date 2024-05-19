@@ -12,6 +12,8 @@ const Menu = () => {
   const { isOpen } = useSelector((store) => store.menu);
   const loaction = useLocation();
   const { pathname } = location;
+  const { cartItem } = useSelector((store) => store.cart);
+  const totalItem = cartItem.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <div className="relative">
@@ -38,7 +40,12 @@ const Menu = () => {
               <img src={searchBtn} alt="search" className="w-4" />
               <img src={personBtn} alt="person" className="w-4" />
               <img src={favouriteBtn} alt="favourite" className="w-4" />
-              <img src={cartBtn} alt="cart" className="w-4" />
+              <div className="relative">
+                <img src={cartBtn} alt="cart" className="w-4" />
+                <div className="absolute -top-2 -right-4 px-[0.5rem] rounded-full text-xs text-white py-[0.125rem] bg-orange-400">
+                  {totalItem}
+                </div>
+              </div>
             </div>
 
             <li className="text-lightGray text-base">Sign In</li>

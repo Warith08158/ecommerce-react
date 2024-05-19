@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../utils/Sidebar";
 import { Link } from "react-router-dom";
 import { ratings } from "../../../data/ratings";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Footer,
   NewsLetter,
@@ -10,6 +10,7 @@ import {
 } from "../../../components/components";
 import GalleryImages from "../../../components/GalleryImages";
 import { arrowLeft, arrowRight } from "../../../assets/Icons/Icons";
+import { addToCart } from "../../../features/cart/cartSlice";
 
 const Filter = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,11 +25,13 @@ const Filter = () => {
     end: 3,
     num: 0,
   });
+  const dispatch = useDispatch();
   const {
     dataCopy: products,
     paginationState: num,
     nextTo,
   } = useSelector((store) => store.shopping);
+  const { cartItem } = useSelector((store) => store.cart);
   useEffect(() => {
     setCurrentPagination({
       start: 0,
@@ -65,6 +68,8 @@ const Filter = () => {
     setIsLoading(false);
     setHasError(true);
   };
+
+  console.log(cartItem);
 
   return (
     <section>
@@ -149,7 +154,10 @@ const Filter = () => {
                           ${Math.floor((product.priceCents / 100) * 2)}
                         </p>
                       </div>
-                      <button className="bg-orange-500 text-white rounded-md py-1 mt-2 mx-4">
+                      <button
+                        className="bg-orange-500 text-white rounded-md py-1 mt-2 mx-4"
+                        onClick={() => dispatch(addToCart(product.id))}
+                      >
                         Add to Cart
                       </button>
                     </div>
