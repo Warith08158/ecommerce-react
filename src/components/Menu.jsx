@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   cartBtn,
   favouriteBtn,
@@ -40,12 +40,17 @@ const Menu = () => {
               <img src={searchBtn} alt="search" className="w-4" />
               <img src={personBtn} alt="person" className="w-4" />
               <img src={favouriteBtn} alt="favourite" className="w-4" />
-              <div className="relative">
-                <img src={cartBtn} alt="cart" className="w-4" />
-                <div className="absolute -top-2 -right-4 px-[0.5rem] rounded-full text-xs text-white py-[0.125rem] bg-orange-400">
-                  {totalItem}
+              <Link
+                to={`/shopping/cart`}
+                onClick={() => console.log("clicked")}
+              >
+                <div className="relative">
+                  <img src={cartBtn} alt="cart" className="w-4" />
+                  <div className="absolute -top-2 -right-4 px-[0.5rem] rounded-full text-xs text-white py-[0.125rem] bg-orange-400">
+                    {totalItem}
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
 
             <li className="text-lightGray text-base">Sign In</li>

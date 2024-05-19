@@ -7,11 +7,18 @@ import Features from "../../components/Features";
 import Deals from "../../components/Deals";
 import NewsLetter from "../../components/NewsLetter";
 import Footer from "../../components/Footer";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  reduceItem,
+  removeFromCart,
+} from "../../features/cart/cartSlice";
 const ProductPage = () => {
   const { id: productId } = useParams();
   const item = products.find((product) => product.id === productId);
-  console.log(item.rating.stars);
+  const dispatch = useDispatch();
+  const { cartItem } = useSelector((store) => store.cart);
+  console.log(cartItem);
   return (
     <section className="mt-16">
       <div className="container flex flex-col sm:flex-row sm:items-start gap-6 ">
@@ -48,18 +55,64 @@ const ProductPage = () => {
             Hurry Up! sales ends soon!
           </div>
           <div className="space-y-0 mt-2 w-full">
-            <p>Quantity</p>
+            <p className="mb-2">Quantity</p>
             <div className="flex items-stretch gap-3">
               <div className="flex items-center bg-gray-100 border border-gray-200">
-                <button className="cursor-pointer px-3 py-1">-</button>
-                <p className="cursor-pointer px-3 py-1 text-sm">1</p>
-                <button className="cursor-pointer px-3 py-1">+</button>
+                <button
+                  className={` ${
+                    cartItem.find((product) => product.id === item.id)?.quantity
+                      ? "cursor-pointer"
+                      : "select-none cursor-not-allowed"
+                  } px-3 py-1`}
+                  onClick={() => dispatch(reduceItem(item.id))}
+                >
+                  -
+                </button>
+                <p className="cursor-pointer px-3 py-1 text-sm">
+                  {cartItem.find((product) => product.id === item.id)?.quantity
+                    ? cartItem.find((product) => product.id === item.id)
+                        .quantity
+                    : 0}
+                </p>
+                <button
+                  className="cursor-pointer px-3 py-1"
+                  onClick={() => dispatch(addToCart(item.id))}
+                >
+                  +
+                </button>
               </div>
-              <button className="flex-1 bg-transparent border border-1 border-gray-500 rounded-md text-sm font-volkhov">
+              <button
+                onClick={() => dispatch(addToCart(item.id))}
+                className="flex-1 bg-transparent border border-1 border-gray-500 rounded-md text-sm font-volkhov"
+              >
                 Add to cart
               </button>
             </div>
           </div>
+          {cartItem.find((product) => product.id === item.id)?.quantity && (
+            <button
+              className="text-sm text-red-600 cursor-pointer"
+              onClick={() => dispatch(removeFromCart(item.id))}
+            >
+              Remove Item
+            </button>
+          )}
+          {cartItem.find((product) => product.id === item.id)?.quantity && (
+            <div className="text-sm flex items-center gap-2">
+              <p className="text-lightGray font-volkhov text-md">Total:</p>
+              <p className="text-lightGray font-volkhov text-sm">
+                {" "}
+                $
+                {Math.floor(
+                  (cartItem.find((product) => product.id === item.id)
+                    ?.quantity *
+                    products.find((product) => product.id === item.id)
+                      .priceCents) /
+                    100
+                )}
+              </p>
+            </div>
+          )}
           <div className="flex items-center gap-3 flex-wrap text-sm mt-4">
             <div className="flex items-center gap-1">
               <svg
